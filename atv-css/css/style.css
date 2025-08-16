@@ -1,10 +1,57 @@
+.img:hover, img:hover {
+    transform: scale(1.08);
+    border: 2px solid lightskyblue;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.10);
+    transition: transform 0.3s, border 0.3s, box-shadow 0.3s;
+}
 
 
-.roboto {
-    font-family: "Roboto", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 500;
-    font-style: normal;
-    font-variation-settings:
-      "wdth" 100;
-  }
+body {
+    color: darkslategrey;
+    font-family: Arial, sans-serif;
+    font-size: 17px;
+}
+
+h1 {
+    font-size: 30px;
+    color: darkblue;
+}
+.text-center {
+    text-align: center;
+}
+h2 {
+    font-size: 24px;
+    background-color: lightskyblue;
+    color: darkblue;
+}
+
+/* Links padrão, visitados, ativos e não visitados */
+a, a:link, a:visited, a:active {
+    color: rgb(0, 21, 139);
+    text-decoration: none;
+    cursor: pointer;
+    transition: color 0.3s, text-decoration 0.3s;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: #003366;
+}
+
+h1 a, h1 a:link, h1 a:visited, h1 a:active {
+    color: white;
+}
+h2 a, h2 a:link, h2 a:visited, h2 a:active {
+    color: lightskyblue;
+}
+h1 a:hover, h2 a:hover {
+    color: darkblue;
+    text-decoration: underline;
+}
+
+.copyright {
+    font-weight: bold;
+    font-style: italic;
+    text-align: center;
+    color: darkslategrey;
+}
