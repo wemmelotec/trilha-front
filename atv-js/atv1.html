@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora - Soma</title>
+    <link rel="stylesheet" href="css/style1.css">
+</head>
+<body>
+    <div class="cards-container">
+        <div class="col">
+            <section class="card">
+                <h2>Calculadora de Soma</h2>
+                <div class="inputs">
+                    <input type="number" id="valor1" placeholder="Digite o primeiro valor">
+                    <input type="number" id="valor2" placeholder="Digite o segundo valor">
+                    <button onclick="calcularSoma()">Somar</button>
+                    <button onclick="limparSoma()" class="btn-limpar">Limpar</button>
+                </div>
+                <div id="resultado" class="resultado"></div>
+            </section>
+            <section class="card">
+                <h2>Calculadora de Multiplicação</h2>
+                <div class="inputs">
+                    <input type="number" id="mult1" placeholder="Digite o primeiro valor">
+                    <input type="number" id="mult2" placeholder="Digite o segundo valor">
+                    <button onclick="calcularMultiplicacao()">Multiplicar</button>
+                    <button onclick="limparMultiplicacao()" class="btn-limpar">Limpar</button>
+                </div>
+                <div id="resultado-mult" class="resultado"></div>
+            </section>
+        </div>
+        <div class="col">
+            <section class="card">
+                <h2>Calculadora de Subtração</h2>
+                <div class="inputs">
+                    <input type="number" id="sub1" placeholder="Digite o primeiro valor">
+                    <input type="number" id="sub2" placeholder="Digite o segundo valor">
+                    <button onclick="calcularSubtracao()">Subtrair</button>
+                    <button onclick="limparSubtracao()" class="btn-limpar">Limpar</button>
+                </div>
+                <div id="resultado-sub" class="resultado"></div>
+            </section>
+            <section class="card">
+                <h2>Calculadora de Divisão</h2>
+                <div class="inputs">
+                    <input type="number" id="div1" placeholder="Digite o primeiro valor">
+                    <input type="number" id="div2" placeholder="Digite o segundo valor">
+                    <button onclick="calcularDivisao()">Dividir</button>
+                    <button onclick="limparDivisao()" class="btn-limpar">Limpar</button>
+                </div>
+                <div id="resultado-div" class="resultado"></div>
+            </section>
+        </div>
+    </div>
+    <script src="../atv-js/atv1.js"></script>
+</body>
+</html>
