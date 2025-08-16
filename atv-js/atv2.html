@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora</title>
+    <link rel="stylesheet" href="css/style2.css">
+</head>
+<body>
+    <div class="container-central">
+        <section class="card">
+            <h2>Calculadora</h2>
+            <div class="inputs">
+                <input type="number" id="valor1" placeholder="Digite o primeiro valor">
+                <input type="number" id="valor2" placeholder="Digite o segundo valor">
+                <select id="operacao" onchange="atualizarBotao()">
+                    <option value="soma">Somar</option>
+                    <option value="subtracao">Subtrair</option>
+                    <option value="multiplicacao">Multiplicar</option>
+                    <option value="divisao">Dividir</option>
+                </select>
+                <button id="btn-operacao" onclick="executarOperacao()">Somar</button>
+                <button onclick="limparCalculadora()" class="btn-limpar">Limpar</button>
+            </div>
+            <div id="resultado" class="resultado"></div>
+        </section>
+    </div>
+    <script src="../atv-js/atv2.js"></script>
+</body>
+</html>
