@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora</title>
+    <link rel="stylesheet" href="css/style4.css">
+</head>
+<body>
+    <div class="container-central">
+        <section class="card adivinhacao">
+            <h2>Jogo de Adivinhação</h2>
+            <p class="descricao">Tente adivinhar o número entre <span id="min">1</span> e <span id="max">100</span>. Você tem <span id="tentativas-max">7</span> tentativas!</p>
+            <div class="inputs">
+                <input type="number" id="input-tentativa" placeholder="Digite seu palpite" min="1" max="100">
+                <button id="btn-tentar" onclick="tentarAdivinhar()">Tentar</button>
+                <button onclick="reiniciarJogo()" class="btn-limpar">Reiniciar</button>
+            </div>
+            <div id="feedback" class="resultado"></div>
+            <div id="historico" class="historico"></div>
+        </section>
+    </div>
+    <script type="module" src="../atv-js/atv4.js"></script>
+</body>
+</html>

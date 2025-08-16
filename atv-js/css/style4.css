@@ -1,0 +1,112 @@
+
+
+body {
+    background: #f5f5f5;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+}
+
+.container-central {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(120deg, #f5f5f5 60%, #e0e7ef 100%);
+}
+
+
+
+
+h2 {
+    font-size: 20px;
+}
+
+
+
+.card.adivinhacao {
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 4px 24px rgba(24,61,61,0.12);
+    padding: 36px 28px 28px 28px;
+    width: 350px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Estilo para o container calculadora */
+.inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 16px;
+    width: 100%;
+    align-items: center;
+}
+
+input[type="number"] {
+    padding: 10px;
+    border: 1px solid #bcd;
+    border-radius: 8px;
+    font-size: 18px;
+    width: 90%;
+    max-width: 220px;
+    margin-bottom: 2px;
+}
+
+button {
+    padding: 10px 0;
+    background: #183D3D;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 17px;
+    cursor: pointer;
+    transition: background 0.2s;
+    margin-bottom: 6px;
+    width: 90%;
+    max-width: 220px;
+}
+button.btn-limpar {
+    background: #ccc;
+    color: #222;
+    margin-top: 2px;
+}
+button.btn-limpar:hover {
+    background: #bbb;
+    color: #000;
+}
+button:hover:not(.btn-limpar) {
+    background: #160A00;
+}
+
+.resultado {
+    margin-top: 14px;
+    font-size: 19px;
+    color: #183D3D;
+    min-height: 28px;
+    font-weight: bold;
+}
+
+.descricao {
+    color: #444;
+    font-size: 15px;
+    margin-bottom: 10px;
+}
+
+.historico {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #555;
+    width: 100%;
+    text-align: left;
+    max-height: 120px;
+    overflow-y: auto;
+    border-top: 1px solid #eee;
+    padding-top: 8px;
+}
