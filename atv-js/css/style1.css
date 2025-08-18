@@ -1,85 +1,167 @@
 
-/* Estilo para o card da calculadora */
+/*
+    body
+    Define o estilo global da página
+    - background: #f5f5f5;          -> cor de fundo suave
+    - font-family: Arial, sans-serif;-> fonte padrão para todo o site
+    - margin: 0; padding: 0;         -> remove margens e preenchimentos padrão
+    - min-height: 100vh;             -> garante que o body ocupe toda a altura da tela
+*/
 body {
-    background: #f5f5f5;
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    min-height: 100vh;
-/* fim body */
+        background: #f5f5f5;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        min-height: 100vh;
 }
 
+/*
+    .cards-container
+    Container principal dos cards, organiza as colunas lado a lado
+    - display: flex;                -> ativa o flexbox
+    - flex-direction: row;          -> coloca as colunas lado a lado
+    - justify-content: center;      -> centraliza as colunas horizontalmente
+    - align-items: flex-start;      -> alinha as colunas ao topo
+    - gap: 32px;                    -> espaçamento entre as colunas
+    - margin-top: 60px;             -> espaço acima do container
+    - flex-wrap: wrap;              -> permite quebra de linha em telas pequenas
+*/
 .cards-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: flex-start;
-    gap: 32px;
-    margin-top: 60px;
-    flex-wrap: wrap;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 32px;
+        margin-top: 60px;
+        flex-wrap: wrap;
 }
 
+/*
+    h2
+    Define o tamanho dos títulos das calculadoras
+    - font-size: 20px;              -> tamanho da fonte dos títulos
+*/
 h2 {
-    font-size: 20px;
+        font-size: 20px;
 }
 
+/*
+    .col
+    Define uma coluna de cards (usada para empilhar cards verticalmente em cada coluna do layout principal)
+    - display: flex;                -> ativa o flexbox para o container
+    - flex-direction: column;       -> empilha os elementos verticalmente
+    - gap: 32px;                    -> espaçamento entre os cards
+*/
 .col {
-    display: flex;
-    flex-direction: column;
-    gap: 32px;
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
 }
 
+/*
+    .card
+    Estilo visual dos cards das calculadoras
+    - background: #fff;              -> fundo branco
+    - border-radius: 12px;           -> cantos arredondados
+    - box-shadow: ...;               -> sombra suave
+    - padding: 32px 24px;            -> espaçamento interno
+    - width: 320px;                  -> largura fixa dos cards
+    - text-align: center;            -> centraliza o conteúdo
+*/
 .card {
-    background: #fff;
-    border-radius: 12px;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.10);
-    padding: 32px 24px;
-    width: 320px;
-    text-align: center;
+        background: #fff;
+        border-radius: 12px;
+        box-shadow: 0 4px 16px rgba(0,0,0,0.10);
+        padding: 32px 24px;
+        width: 320px;
+        text-align: center;
 }
 
-/* Estilo para o container calculadora */
+/*
+    .inputs
+    Container dos campos de input e botões dentro de cada card
+    - display: flex;                -> ativa flexbox
+    - flex-direction: column;       -> empilha os elementos verticalmente
+    - gap: 12px;                    -> espaçamento entre inputs/botões
+    - margin-bottom: 16px;          -> espaço abaixo do grupo de inputs
+*/
 .inputs {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    margin-bottom: 16px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        margin-bottom: 16px;
 }
 
+/*
+    input[type="number"]
+    Estilo dos campos de entrada numérica
+    - padding: 8px;                 -> espaçamento interno
+    - border: 1px solid #ccc;       -> borda cinza clara
+    - border-radius: 6px;           -> cantos arredondados
+    - font-size: 16px;              -> tamanho da fonte
+*/
 input[type="number"] {
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    font-size: 16px;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        font-size: 16px;
 }
 
+/*
+    button
+    Estilo dos botões principais
+    - padding: 10px 0;              -> altura do botão
+    - background: #183D3D;          -> cor de fundo
+    - color: #fff;                  -> cor do texto
+    - border: none;                 -> sem borda
+    - border-radius: 6px;           -> cantos arredondados
+    - font-size: 16px;              -> tamanho da fonte
+    - cursor: pointer;              -> cursor de mão
+    - transition: background 0.2s;  -> transição suave ao passar o mouse
+    - margin-bottom: 6px;           -> espaço abaixo do botão
+*/
 button {
-    padding: 10px 0;
-    background: #183D3D;
-    color: #fff;
-    border: none;
-    border-radius: 6px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background 0.2s;
-    margin-bottom: 6px;
+        padding: 10px 0;
+        background: #183D3D;
+        color: #fff;
+        border: none;
+        border-radius: 6px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background 0.2s;
+        margin-bottom: 6px;
 }
+/*
+    button.btn-limpar
+    Estilo do botão de limpar
+    - background: #ccc;              -> fundo cinza
+    - color: #222;                   -> texto escuro
+    - margin-top: 2px;               -> espaço acima
+*/
 button.btn-limpar {
-    background: #ccc;
-    color: #222;
-    margin-top: 2px;
+        background: #ccc;
+        color: #222;
+        margin-top: 2px;
 }
 button.btn-limpar:hover {
-    background: #bbb;
-    color: #000;
+        background: #bbb;
+        color: #000;
 }
 button:hover:not(.btn-limpar) {
-    background: #160A00;
+        background: #160A00;
 }
 
+/*
+    .resultado
+    Estilo da área de exibição do resultado
+    - margin-top: 12px;              -> espaço acima
+    - font-size: 18px;               -> tamanho do texto
+    - color: #183D3D;                -> cor do texto
+    - min-height: 24px;              -> altura mínima
+*/
 .resultado {
-    margin-top: 12px;
-    font-size: 18px;
-    color: #183D3D;
-    min-height: 24px;
+        margin-top: 12px;
+        font-size: 18px;
+        color: #183D3D;
+        min-height: 24px;
 }
