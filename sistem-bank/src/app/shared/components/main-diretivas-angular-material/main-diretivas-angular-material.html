@@ -1,0 +1,106 @@
+<!-- Exemplo de tabela (mat-table) com mat-menu de ações na última coluna -->
+<h3>Exemplo de Tabela com Menu de Ações</h3>
+<table mat-table [dataSource]="mockData" class="mat-elevation-z8">
+	<!-- Coluna Nome -->
+	<ng-container matColumnDef="nome">
+		<th mat-header-cell *matHeaderCellDef>Nome</th>
+		<td mat-cell *matCellDef="let element">{{element.nome}}</td>
+	</ng-container>
+
+	<!-- Coluna Email -->
+	<ng-container matColumnDef="email">
+		<th mat-header-cell *matHeaderCellDef>Email</th>
+		<td mat-cell *matCellDef="let element">{{element.email}}</td>
+	</ng-container>
+
+	<!-- Coluna Ações -->
+	<ng-container matColumnDef="acoes">
+		<th mat-header-cell *matHeaderCellDef>Ação</th>
+		<td mat-cell *matCellDef="let element">
+			<button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Ações">
+				<mat-icon>open_in_new</mat-icon>
+			</button>
+			<mat-menu #menu="matMenu">
+				<button mat-menu-item (click)="editar(element)">Editar</button>
+				<button mat-menu-item (click)="excluir(element)">Excluir</button>
+			</mat-menu>
+		</td>
+	</ng-container>
+
+	<tr mat-header-row *matHeaderRowDef="['nome', 'email', 'acoes']"></tr>
+	<tr mat-row *matRowDef="let row; columns: ['nome', 'email', 'acoes'];"></tr>
+</table>
+
+<!-- matInput: campo de texto estilizado pelo Material -->
+<mat-form-field appearance="fill">
+	<mat-label>Nome</mat-label>
+	<input matInput placeholder="Digite seu nome">
+</mat-form-field>
+
+<!-- mat-button: botão estilizado pelo Material -->
+<button mat-raised-button color="primary">Botão Material</button>
+
+<!-- matTooltip: tooltip ao passar o mouse -->
+<button mat-raised-button matTooltip="Teste de Usabilidade">Passe o mouse aqui</button>
+
+<!-- matMenuTriggerFor: botão que abre menu -->
+<button mat-button [matMenuTriggerFor]="menu">Menu</button>
+<mat-menu #menu="matMenu">
+	<button mat-menu-item>Item 1</button>
+	<button mat-menu-item>Item 2</button>
+</mat-menu>
+
+<!-- matCheckbox: checkbox estilizado -->
+<mat-checkbox>Concordo com os termos</mat-checkbox>
+
+<!-- matRadioGroup/matRadioButton: radio buttons estilizados -->
+<mat-radio-group>
+	<mat-radio-button value="opcao1">Opção 1</mat-radio-button>
+	<mat-radio-button value="opcao2">Opção 2</mat-radio-button>
+</mat-radio-group>
+
+<!-- matSelect: select estilizado -->
+<mat-form-field appearance="fill">
+	<mat-label>Escolha uma opção</mat-label>
+	<mat-select>
+		<mat-option value="1">Opção 1</mat-option>
+		<mat-option value="2">Opção 2</mat-option>
+	</mat-select>
+</mat-form-field>
+
+<!-- matBadge: badge de notificação -->
+<button mat-icon-button matBadge="25" matBadgeColor="accent">
+	<mat-icon>mail</mat-icon>
+</button>
+
+<!-- matTabGroup/matTab: abas -->
+<mat-tab-group>
+	<mat-tab label="Aba 1">Conteúdo da Aba 1</mat-tab>
+	<mat-tab label="Aba 2">Conteúdo da Aba 2</mat-tab>
+</mat-tab-group>
+
+<!-- matExpansionPanel: painel expansível -->
+<mat-accordion>
+	<mat-expansion-panel>
+		<mat-expansion-panel-header>
+			Painel 1
+		</mat-expansion-panel-header>
+		<p>Conteúdo do painel expansível</p>
+	</mat-expansion-panel>
+</mat-accordion>
+
+<!-- matDialog: exemplo de botão para abrir diálogo (funcionalidade depende de implementação TS) -->
+<button mat-raised-button color="accent">Abrir Diálogo</button>
+
+<!-- matSort: exemplo de cabeçalho de tabela ordenável (funcionalidade depende de implementação TS) -->
+<table mat-table [dataSource]="[]" matSort>
+	<ng-container matColumnDef="nome">
+		<th mat-header-cell *matHeaderCellDef mat-sort-header>Nome</th>
+		<td mat-cell *matCellDef="let element">{{element.nome}}</td>
+	</ng-container>
+	<tr mat-header-row *matHeaderRowDef="['nome']"></tr>
+	<tr mat-row *matRowDef="let row; columns: ['nome'];"></tr>
+</table>
+
+
+
