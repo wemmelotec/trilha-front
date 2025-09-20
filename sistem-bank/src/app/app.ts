@@ -1,11 +1,11 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { Navbar } from "./shared/components/navbar/navbar";
-import { MainDiretivasAngularMaterial } from "./shared/components/main-diretivas-angular-material/main-diretivas-angular-material";
+import { LoginTemplate } from "./pages/auth/login-template/login-template";
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, Navbar, MainDiretivasAngularMaterial],
+  imports: [RouterOutlet, LoginTemplate],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })
