@@ -1,0 +1,99 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+
+
+}
+
+
+.form {
+  background-color: #F0F2F5;
+  width: 50%;
+  height: 100%;
+}
+
+.image {
+  background-color: #1A468E;
+  width: 50%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+
+  img {
+    width: 100%;
+    max-height: 80%;
+    margin-left: 72px;
+    margin-right: 72px;
+  }
+}
+
+.logo {
+  display: block;
+  margin-left: 160px;
+  margin-right: 160px;
+  margin-top: 80px;
+
+  img {
+    width: 150px;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.15));
+    transition: transform 0.3s ease;
+    border-radius: 8px;
+  }
+}
+
+.login-form {
+  margin-left: 160px;
+  margin-right: 160px;
+  margin-top: 120px;
+}
+
+// Estilos customizados com Bootstrap
+.container-fluid {
+  padding: 0;
+}
+
+.bg-light {
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%) !important;
+}
+
+.logo img:hover {
+  transform: scale(1.05);
+}
+
+// Ajustes específicos para diferentes breakpoints
+@media (max-width: 767.98px) {
+  .login-form {
+    padding: 0 1rem;
+  }
+
+  .logo {
+    margin-bottom: 2rem !important;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+  .col-md-8 {
+    padding: 2rem;
+  }
+}
+
+// Gradient overlay para a imagem (opcional)
+.col-lg-6:last-child::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.3) 0%, rgba(118, 75, 162, 0.3) 100%);
+  z-index: 1;
+}
+
+.col-lg-6:last-child img {
+  z-index: 0;
+}

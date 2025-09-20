@@ -1,9 +1,9 @@
-export interface Usuario {
+export interface ClienteModel {
   id: number;
   nome: string;
   cpf: string;
   email: string;
   senha: string;
-  status: boolean;
-  criado_em: string;
+  ativo: boolean;
+  observacoes: string;
 }
