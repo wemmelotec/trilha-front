@@ -1,1 +1,152 @@
-<p>cadastro-conta works!</p>
+<!-- Navbar -->
+<app-navbar></app-navbar>
+
+<!-- Wrapper de conteúdo -->
+<div class="content-wrapper">
+  <div class="container-fluid py-4">
+    <div class="row justify-content-center">
+      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+        <div class="card shadow-sm border-0">
+          <div class="card-body p-4">
+            <h1 class="text-center mb-4">
+              {{ editar ? 'Editar Conta' : 'Nova Conta' }}
+            </h1>
+            <form
+              [formGroup]="formGroup"
+              class="example-form"
+              (ngSubmit)="cadastrar()"
+            >
+              <!-- Input de cliente -->
+              <small
+                class="text-danger mb-2"
+                *ngIf="formGroup.get('cliente')?.errors &&
+                    formGroup.get('cliente')?.hasError('required')"
+                >Campo obrigatório</small
+              >
+              <mat-form-field class="example-full-width">
+                <mat-label>Cliente</mat-label>
+                <mat-select formControlName="cliente">
+                  <mat-option *ngFor="let cliente of clientes" [value]="cliente.id">
+                    {{cliente.nome}} - {{cliente.cpf}}
+                  </mat-option>
+                </mat-select>
+                <mat-hint>
+                  <button type="button" mat-button class="text-primary p-0" (click)="navegarParaClientes()">
+                    <mat-icon style="font-size: 16px; width: 16px; height: 16px;">open_in_new</mat-icon>
+                    Ver listagem de clientes
+                  </button>
+                </mat-hint>
+              </mat-form-field>
+
+              <!-- Input de número da conta -->
+              <small
+                class="text-danger mb-2"
+                *ngIf="formGroup.get('numero')?.errors &&
+                    formGroup.get('numero')?.hasError('required')"
+                >Campo obrigatório</small
+              >
+              <small
+                class="text-danger mb-2"
+                *ngIf="formGroup.get('numero')?.errors &&
+                    formGroup.get('numero')?.hasError('pattern')"
+                >Apenas números são permitidos</small
+              >
+              <small
+                class="text-danger mb-2"
+                *ngIf="formGroup.get('numero')?.errors &&
+                    formGroup.get('numero')?.hasError('minlength')"
+                >Mínimo de 3 caracteres</small
+              >
+              <small
+                class="text-danger mb-2"
+                *ngIf="formGroup.get('numero')?.errors &&
+                    formGroup.get('numero')?.hasError('maxlength')"
+                >Máximo de 20 caracteres</small
+              >
+              <mat-form-field class="example-full-width">
+                <mat-label>Número da Conta</mat-label>
+                <input matInput formControlName="numero" placeholder="Ex: 123456789" />
+              </mat-form-field>
+
+              <!-- Input de agência -->
+              <small
+                class="text-danger mb-2"
+                *ngIf="formGroup.get('agencia')?.errors &&
+                    formGroup.get('agencia')?.hasError('required')"
+                >Campo obrigatório</small
+              >
+              <small
+                class="text-danger mb-2"
+                *ngIf="formGroup.get('agencia')?.errors &&
+                    formGroup.get('agencia')?.hasError('pattern')"
+                >Apenas números são permitidos</small
+              >
+              <small
+                class="text-danger mb-2"
+                *ngIf="formGroup.get('agencia')?.errors &&
+                    formGroup.get('agencia')?.hasError('minlength')"
+                >Mínimo de 3 caracteres</small
+              >
+              <small
+                class="text-danger mb-2"
+                *ngIf="formGroup.get('agencia')?.errors &&
+                    formGroup.get('agencia')?.hasError('maxlength')"
+                >Máximo de 10 caracteres</small
+              >
+              <mat-form-field class="example-full-width">
+                <mat-label>Agência</mat-label>
+                <input matInput formControlName="agencia" placeholder="Ex: 0555" />
+              </mat-form-field>
+
+              <!-- Input de saldo -->
+              <small
+                class="text-danger mb-2"
+                *ngIf="formGroup.get('saldo')?.errors &&
+                    formGroup.get('saldo')?.hasError('required')"
+                >Campo obrigatório</small
+              >
+              <small
+                class="text-danger mb-2"
+                *ngIf="formGroup.get('saldo')?.errors &&
+                    formGroup.get('saldo')?.hasError('pattern')"
+                >Formato inválido (use formato: 0.00)</small
+              >
+              <mat-form-field class="example-full-width">
+                <mat-label>Saldo Inicial</mat-label>
+                <input
+                  matInput
+                  formControlName="saldo"
+                  placeholder="0.00"
+                  type="text"
+                />
+                <span matPrefix>R$ </span>
+              </mat-form-field>
+
+              <!-- Botões de ação -->
+              <div class="d-flex justify-content-center gap-3 mt-4">
+                <button
+                  type="button"
+                  mat-stroked-button
+                  color="warn"
+                  class="px-4"
+                  (click)="cancelar()"
+                >
+                  Cancelar
+                </button>
+                <button
+                  [disabled]="!formGroup.valid"
+                  type="submit"
+                  mat-raised-button
+                  color="primary"
+                  class="px-5"
+                >
+                  {{ editar ? 'Atualizar' : 'Cadastrar' }}
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

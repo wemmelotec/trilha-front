@@ -9,7 +9,6 @@ export interface ContaModel {
 }
 
 // Interface opcional para quando precisar do objeto cliente completo
-/**
 export interface ContaComClienteModel {
   id: number;
   numero: string;
@@ -17,4 +16,3 @@ export interface ContaComClienteModel {
   saldo: string;
   cliente: ClienteModel; // objeto completo do cliente
 }
-**/

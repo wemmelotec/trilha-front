@@ -27,7 +27,8 @@ export class ContaService {
   }
 
   updateConta(conta: ContaModel): Observable<ContaModel> {
-    return this.http.put<ContaModel>(`${this.apiUrl}/${conta.id}`, conta);
+    console.log(`Atualizando conta com ID: ${conta.id}`); // Debug
+    return this.http.put<ContaModel>(`${this.apiUrl}${conta.id}`, conta);
   }
 
   deleteConta(id: number): Observable<object> {
@@ -37,5 +38,5 @@ export class ContaService {
   getContasPaginated(page: number, size: number): Observable<ContaModel[]> {
     return this.http.get<ContaModel[]>(`${this.apiUrl}?page=${page}&size=${size}`);
   }
-  
+
 }
