@@ -2,7 +2,7 @@ import { Component, AfterViewInit, ViewChild, inject, signal } from '@angular/co
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
-import { MatPaginator, MatPaginatorModule, PageEvent } from '@angular/material/paginator';
+import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
@@ -11,12 +11,6 @@ import Swal from 'sweetalert2';
 import { ClienteService } from '../../../shared/services/cliente/clienteService';
 import { ClienteModel } from '../../../shared/models/clienteModel';
 import { Navbar } from '../../../shared/components/navbar/navbar';
-
-// Se sua API ainda não retorna este formato, ajuste o service para retornar { items, total }.
-export interface PageResult<T> {
-  items: T[];
-  total: number;
-}
 
 @Component({
   selector: 'app-listagem-cliente',
@@ -41,15 +35,16 @@ export class ListagemCliente implements AfterViewInit {
   // colunas exibidas na tabela
   displayedColumns: string[] = ['id', 'nome', 'cpf', 'email', 'status', 'funcoes'];
 
-  // datasource do Material (poderia ser Cliente[]; usando MatTableDataSource por compatibilidade com seu template)
+  // datasource do Material
   dataSource = new MatTableDataSource<ClienteModel>([]);
 
+  // dados paginados para exibição
+  dadosPaginados: ClienteModel[] = [];
 
-  // paginação (server-side)
-  totalClientes = 0;
-  pageIndex = 0; // zero-based para o paginator
+  // configuração da paginação
   pageSize = 5;
-
+  pageIndex = 0;
+  totalClientes = 0;
 
   loading = signal(false);
 
@@ -58,27 +53,28 @@ export class ListagemCliente implements AfterViewInit {
 
 
   ngAfterViewInit(): void {
-    this.listarClientes(this.pageIndex + 1, this.pageSize);
+    this.listarClientes();
   }
 
-
-  listarClientes(page: number, pageSize: number): void {
+  listarClientes(): void {
     this.loading.set(true);
 
+    this.clienteService.getClientes().subscribe({
+      next: (clientes: ClienteModel[]) => {
+        // Armazena todos os dados
+        this.dataSource.data = clientes;
+        this.totalClientes = clientes.length;
 
-    // Ajuste seu service para retornar Observable<PageResult<Cliente>>
-    this.clienteService.getClientesPaginated(page, pageSize).subscribe({
-      next: (res: PageResult<ClienteModel> | ClienteModel[]) => {
-        // fallback: se a API ainda retornar apenas array, tenta deduzir total
-        if (Array.isArray(res)) {
-          this.dataSource.data = res;
-          // Caso não saiba o total, use um valor aproximado (ex.: page * pageSize + 1)
-          // Recomendo fortemente evoluir sua API para retornar { items, total }
-          this.totalClientes = this.pageIndex * this.pageSize + res.length;
-        } else {
-          this.dataSource.data = res.items;
-          this.totalClientes = res.total;
+        // Calcula e aplica a paginação
+        this.aplicarPaginacao();
+
+        // Conecta o paginator para a tabela desktop
+        if (this.paginator) {
+          this.paginator.length = this.totalClientes;
+          this.paginator.pageSize = this.pageSize;
+          this.paginator.pageIndex = this.pageIndex;
         }
+
         this.loading.set(false);
       },
       error: (err) => {
@@ -93,11 +89,16 @@ export class ListagemCliente implements AfterViewInit {
     });
   }
 
+  aplicarPaginacao(): void {
+    const startIndex = this.pageIndex * this.pageSize;
+    const endIndex = startIndex + this.pageSize;
+    this.dadosPaginados = this.dataSource.data.slice(startIndex, endIndex);
+  }
 
-  onPageChange(event: PageEvent): void {
-    this.pageIndex = event.pageIndex;         // zero-based
+  onPageChange(event: any): void {
+    this.pageIndex = event.pageIndex;
     this.pageSize = event.pageSize;
-    this.listarClientes(this.pageIndex + 1, this.pageSize); // sua API usa 1-based
+    this.aplicarPaginacao();
   }
 
   deletarCliente(id: number): void {
@@ -120,8 +121,8 @@ export class ListagemCliente implements AfterViewInit {
               showConfirmButton: false,
               timer: 1500,
             });
-            // Recarrega a página atual (mantendo página/size)
-            this.listarClientes(this.pageIndex + 1, this.pageSize);
+            // Recarrega a lista de clientes
+            this.listarClientes();
           },
           error: (error) => {
             console.error(error);
