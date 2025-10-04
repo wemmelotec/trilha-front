@@ -16,14 +16,22 @@ export class LoginForm {
   // Inicializa para evitar "Cannot read properties of undefined"
   loginData: { email: string; password: string } = { email: '', password: '' };
   errorMessage: string = '';
+  isLoading: boolean = false;
 
   onLogin() {
-    // exemplo simples de validação mock
-    if (this.loginData.email === 'admin@sistembank.com' && this.loginData.password === '123456') {
-      this.errorMessage = '';
-      // redirecionamento / estado de login aqui
-    } else {
-      this.errorMessage = 'Email ou senha incorretos.';
-    }
+    this.isLoading = true;
+    this.errorMessage = '';
+
+    // Simula uma requisição
+    setTimeout(() => {
+      // exemplo simples de validação mock
+      if (this.loginData.email === 'admin@sistembank.com' && this.loginData.password === '123456') {
+        this.errorMessage = '';
+        // redirecionamento / estado de login aqui
+      } else {
+        this.errorMessage = 'Email ou senha incorretos.';
+      }
+      this.isLoading = false;
+    }, 1500);
   }
 }

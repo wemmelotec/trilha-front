@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import { CadastroCliente } from './pages/cliente/cadastro-cliente/cadastro-cliente';
 import { ListagemCliente } from './pages/cliente/listagem-cliente/listagem-cliente';
+import { LoginTemplate } from './pages/auth/login-template/login-template';
 
 export const routes: Routes = [
   { path: 'cliente',
@@ -11,4 +12,5 @@ export const routes: Routes = [
     ]
   },
   { path: '', component: ListagemCliente },
+  { path: 'auth', component: LoginTemplate },
 ];
