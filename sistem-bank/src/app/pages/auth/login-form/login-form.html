@@ -4,26 +4,24 @@
     <p class="login-subtitle">Entre na sua conta para continuar</p>
   </div>
 
-  <form (ngSubmit)="onLogin()" #loginForm="ngForm" class="login-form">
-    <!-- Email Input -->
+  <form (ngSubmit)="login()" [formGroup]="formGroup" class="login-form">
+    <!-- Username Input -->
     <div class="form-group mb-4">
-      <label for="email" class="form-label">E-mail</label>
+      <label for="username" class="form-label">Usuário</label>
       <div class="input-group">
         <span class="input-icon">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M4 4H20C21.1 4 22 4.9 22 6V18C22 19.1 21.1 20 20 20H4C2.9 20 2 19.1 2 18V6C2 4.9 2.9 4 4 4Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            <polyline points="22,6 12,13 2,6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M20 21V19C20 17.9391 19.5786 16.9217 18.8284 16.1716C18.0783 15.4214 17.0609 15 16 15H8C6.93913 15 5.92172 15.4214 5.17157 16.1716C4.42143 16.9217 4 17.9391 4 19V21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="12" cy="7" r="4" stroke="currentColor" stroke-width="2"/>
           </svg>
         </span>
         <input
-          type="email"
+          type="text"
           class="form-control modern-input"
-          id="email"
-          name="email"
-          [(ngModel)]="loginData.email"
-          placeholder="seu@email.com"
-          required
-          autocomplete="email"
+          id="username"
+          formControlName="username"
+          placeholder="Digite seu usuário"
+          autocomplete="username"
         >
       </div>
     </div>
@@ -43,10 +41,8 @@
           type="password"
           class="form-control modern-input"
           id="password"
-          name="password"
-          [(ngModel)]="loginData.password"
+          formControlName="password"
           placeholder="••••••••"
-          required
           autocomplete="current-password"
         >
       </div>
@@ -67,27 +63,10 @@
     <button
       type="submit"
       class="btn btn-login w-100 mb-3"
-      [disabled]="!loginForm.form.valid"
-      [class.loading]="isLoading"
+      [disabled]="!formGroup.valid"
     >
-      <span *ngIf="!isLoading">Entrar</span>
-      <span *ngIf="isLoading" class="loading-spinner">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M12 2V6M12 18V22M4.93 4.93L7.76 7.76M16.24 16.24L19.07 19.07M2 12H6M18 12H22M4.93 19.07L7.76 16.24M16.24 7.76L19.07 4.93" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-        Entrando...
-      </span>
+      <span>Entrar</span>
     </button>
-
-    <!-- Error Message -->
-    <div *ngIf="errorMessage" class="alert alert-danger modern-alert" role="alert">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
-        <line x1="15" y1="9" x2="9" y2="15" stroke="currentColor" stroke-width="2"/>
-        <line x1="9" y1="9" x2="15" y2="15" stroke="currentColor" stroke-width="2"/>
-      </svg>
-      {{ errorMessage }}
-    </div>
   </form>
 
   <!-- Footer -->
