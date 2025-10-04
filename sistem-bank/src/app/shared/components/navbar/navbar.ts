@@ -5,6 +5,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatDividerModule} from '@angular/material/divider';
+import { AuthService } from '../../services/auth/auth-service';
 
 @Component({
   selector: 'app-navbar',
@@ -22,7 +23,13 @@ import {MatDividerModule} from '@angular/material/divider';
 export class Navbar {
   isMobileMenuOpen = false;
 
+  constructor(private authService: AuthService) {}
+
   toggleMobileMenu() {
     this.isMobileMenuOpen = !this.isMobileMenuOpen;
+  }
+
+  logout() {
+    this.authService.logout();
   }
 }

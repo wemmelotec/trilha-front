@@ -67,8 +67,11 @@
             <button class="btn btn-outline-primary w-100 mb-2" (click)="toggleMobileMenu()">
               <mat-icon class="me-2">share</mat-icon>Compartilhar
             </button>
-            <button class="btn btn-primary w-100" (click)="toggleMobileMenu()">
+            <button class="btn btn-outline-primary w-100 mb-2" (click)="toggleMobileMenu()">
               <mat-icon class="me-2">account_circle</mat-icon>Perfil
+            </button>
+            <button class="btn btn-danger w-100" (click)="logout()">
+              <mat-icon class="me-2">logout</mat-icon>Sair
             </button>
           </div>
         </div>
@@ -87,7 +90,7 @@
       <span>Configurações</span>
     </button>
     <mat-divider></mat-divider>
-    <button mat-menu-item>
+    <button mat-menu-item (click)="logout()">
       <mat-icon>logout</mat-icon>
       <span>Sair</span>
     </button>
