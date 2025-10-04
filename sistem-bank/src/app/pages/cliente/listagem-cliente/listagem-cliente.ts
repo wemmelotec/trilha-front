@@ -5,6 +5,8 @@ import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatPaginator, MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import Swal from 'sweetalert2';
 import { ClienteService } from '../../../shared/services/cliente/clienteService';
 import { ClienteModel } from '../../../shared/models/clienteModel';
@@ -24,6 +26,8 @@ export interface PageResult<T> {
     MatPaginatorModule,
     MatIconModule,
     MatButtonModule,
+    MatProgressSpinnerModule,
+    MatTooltipModule,
   ],
   templateUrl: './listagem-cliente.html',
   styleUrl: './listagem-cliente.scss'
