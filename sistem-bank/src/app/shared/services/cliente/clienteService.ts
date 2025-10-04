@@ -18,7 +18,8 @@ export class ClienteService {
   }
 
   getClienteById(id: number): Observable<ClienteModel> {
-    return this.http.get<ClienteModel>(`${this.apiUrl}/${id}`);
+    console.log(`Buscando cliente com ID: ${id}`); // Debug
+    return this.http.get<ClienteModel>(`${this.apiUrl}${id}`);
   }
 
   createCliente(cliente: ClienteModel): Observable<ClienteModel> {

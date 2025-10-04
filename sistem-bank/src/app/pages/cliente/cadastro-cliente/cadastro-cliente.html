@@ -8,7 +8,9 @@
     <div class="col-12 col-md-8 col-lg-6 col-xl-5">
       <div class="card shadow-sm border-0">
         <div class="card-body p-4">
-          <h1 class="text-center mb-4">Novo Cliente</h1>
+          <h1 class="text-center mb-4">
+            {{ editar ? 'Editar Cliente' : 'Novo Cliente' }}
+          </h1>
           <form
             [formGroup]="formGroup"
             class="example-form"
@@ -68,7 +70,16 @@
       </mat-radio-group>
 
       <!--Botao de submissao do formulario-->
-      <div class="d-flex justify-content-center mt-4">
+      <div class="d-flex justify-content-center gap-3 mt-4">
+        <button
+          type="button"
+          mat-stroked-button
+          color="warn"
+          class="px-4"
+          (click)="cancelar()"
+        >
+          Cancelar
+        </button>
         <button
           [disabled]="!formGroup.valid"
           type="submit"
@@ -76,7 +87,7 @@
           color="primary"
           class="px-5"
         >
-          Cadastrar
+          {{ editar ? 'Atualizar' : 'Cadastrar' }}
         </button>
       </div>
     </form>
