@@ -28,20 +28,8 @@ export class LoginForm {
   login() {
     if (this.formGroup.valid) {
       const data = this.formGroup.value;
-      this.authService.login(data).subscribe({
-        next: (response) => {
-          console.log('Login successful', response);
-          this.router.navigate(['/']);
-        },
-        error: (error) => {
-          Swal.fire({
-            icon: 'error',
-            title: 'Oops...',
-            text: 'Usuário e/ou senha inválidos!',
-          });
-        }
-      });
-    }
+      this.authService.login(data)
+   }
   }
 
 }
