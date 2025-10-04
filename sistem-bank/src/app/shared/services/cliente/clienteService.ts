@@ -27,11 +27,12 @@ export class ClienteService {
   }
 
   updateCliente(cliente: ClienteModel): Observable<ClienteModel> {
-    return this.http.put<ClienteModel>(`${this.apiUrl}/${cliente.id}`, cliente);
+    console.log(`Atualizando cliente com ID: ${cliente.id}`); // Debug
+    return this.http.put<ClienteModel>(`${this.apiUrl}${cliente.id}`, cliente);
   }
 
   deleteCliente(id: number): Observable<object> {
-    return this.http.delete<object>(`${this.apiUrl}/${id}`);
+    return this.http.delete<object>(`${this.apiUrl}${id}`);
   }
 
   getClientesPaginated(page: number, size: number): Observable<ClienteModel[]> {

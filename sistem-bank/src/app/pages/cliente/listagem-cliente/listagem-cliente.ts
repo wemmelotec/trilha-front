@@ -107,16 +107,20 @@ export class ListagemCliente implements AfterViewInit {
       text: 'Não tem como reverter essa ação',
       icon: 'warning',
       showCancelButton: true,
-      confirmButtonColor: 'red',
-      cancelButtonColor: 'grey',
-      confirmButtonText: 'Deletar',
+      confirmButtonColor: '#d33',
+      cancelButtonColor: '#3085d6',
+      confirmButtonText: 'Sim, deletar!',
+      cancelButtonText: 'Cancelar'
     }).then((result) => {
       if (result.isConfirmed) {
+        console.log(`Tentando deletar cliente com ID: ${id}`); // Debug
+
         this.clienteService.deleteCliente(id).subscribe({
-          next: () => {
+          next: (response) => {
+            console.log('Cliente deletado com sucesso:', response); // Debug
             Swal.fire({
               icon: 'success',
-              title: 'Sucesso',
+              title: 'Sucesso!',
               text: 'Cliente deletado com sucesso!',
               showConfirmButton: false,
               timer: 1500,
@@ -125,11 +129,25 @@ export class ListagemCliente implements AfterViewInit {
             this.listarClientes();
           },
           error: (error) => {
-            console.error(error);
+            console.error('Erro ao deletar cliente:', error); // Debug melhorado
+
+            let errorMessage = 'Erro ao deletar cliente!';
+
+            // Verifica o tipo de erro para dar uma mensagem mais específica
+            if (error.status === 404) {
+              errorMessage = 'Cliente não encontrado!';
+            } else if (error.status === 403) {
+              errorMessage = 'Você não tem permissão para deletar este cliente!';
+            } else if (error.status === 409) {
+              errorMessage = 'Cliente não pode ser deletado pois possui vínculos!';
+            } else if (error.error && error.error.message) {
+              errorMessage = error.error.message;
+            }
+
             Swal.fire({
               icon: 'error',
               title: 'Oops...',
-              text: 'Erro ao deletar cliente!',
+              text: errorMessage,
             });
           },
         });
