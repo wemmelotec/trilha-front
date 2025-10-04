@@ -10,6 +10,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import Swal from 'sweetalert2';
 import { ClienteService } from '../../../shared/services/cliente/clienteService';
 import { ClienteModel } from '../../../shared/models/clienteModel';
+import { Navbar } from '../../../shared/components/navbar/navbar';
 
 // Se sua API ainda não retorna este formato, ajuste o service para retornar { items, total }.
 export interface PageResult<T> {
@@ -28,6 +29,7 @@ export interface PageResult<T> {
     MatButtonModule,
     MatProgressSpinnerModule,
     MatTooltipModule,
+    Navbar,
   ],
   templateUrl: './listagem-cliente.html',
   styleUrl: './listagem-cliente.scss'

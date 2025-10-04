@@ -1,5 +1,24 @@
 // ===== ESTILOS RESPONSIVOS PARA LISTAGEM DE CLIENTES =====
 
+// Ajustes para harmonizar com o navbar
+body {
+  padding-top: 0; // Remove padding superior se existir
+}
+
+// Wrapper de conteúdo
+.content-wrapper {
+  background: linear-gradient(
+    to bottom,
+    rgba(248, 249, 250, 0.3) 0%,
+    transparent 50%
+  );
+  min-height: calc(100vh - 80px);
+
+  @media (max-width: 768px) {
+    min-height: calc(100vh - 70px);
+  }
+}
+
 // Container principal
 .container-fluid {
   max-width: 1400px;
@@ -8,9 +27,7 @@
   @media (max-width: 576px) {
     padding: 1rem;
   }
-}
-
-// Header da página
+}// Header da página
 .page-title {
   font-size: 2rem;
   font-weight: 600;

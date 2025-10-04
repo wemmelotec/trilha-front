@@ -1,3 +1,31 @@
+// ===== ESTILOS RESPONSIVOS PARA CADASTRO DE CLIENTES =====
+
+// Ajustes para harmonizar com o navbar
+body {
+  padding-top: 0; // Remove padding superior se existir
+}
+
+// Wrapper de conteúdo
+.content-wrapper {
+  background: linear-gradient(
+    to bottom,
+    rgba(248, 249, 250, 0.3) 0%,
+    transparent 50%
+  );
+  min-height: calc(100vh - 80px);
+
+  @media (max-width: 768px) {
+    min-height: calc(100vh - 70px);
+  }
+}
+
+// Container principal com espaçamento do navbar
+.container-fluid {
+  @media (max-width: 576px) {
+    padding: 1rem;
+  }
+}
+
 .example-form {
   min-width: 150px;
   max-width: 500px;
