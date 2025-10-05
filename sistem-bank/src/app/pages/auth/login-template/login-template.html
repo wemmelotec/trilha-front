@@ -1,24 +1,61 @@
-<div class="container-fluid vh-100">
-  <div class="row h-100">
+<div class="login-container">
+  <div class="row h-100 g-0">
     <!-- Lado esquerdo - Formulário -->
-    <div class="col-lg-6 col-md-8 col-12 d-flex flex-column justify-content-center align-items-center bg-light">
-      <div class="logo mb-4">
-        <!-- Logo funcional hospedado publicamente -->
-        <img src="" />
+    <div class="col-lg-6 col-md-8 col-12 d-flex flex-column justify-content-center align-items-center form-side">
+      <!-- Logo/Brand -->
+      <div class="brand-section mb-5">
+        <div class="brand-icon">
+          <svg width="60" height="60" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2L13.09 8.26L22 9L13.09 9.74L12 16L10.91 9.74L2 9L10.91 8.26L12 2Z" fill="url(#gradient)"/>
+            <defs>
+              <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+                <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+        <h2 class="brand-title">SistemBank</h2>
+        <p class="brand-subtitle">Sua plataforma bancária digital</p>
       </div>
-      <div class="login-form w-100" style="max-width: 420px;">
+
+      <!-- Formulário de Login -->
+      <div class="login-form-wrapper w-100">
         <app-login-form></app-login-form>
       </div>
     </div>
 
-    <!-- Lado direito - Imagem (financeira, clean) -->
-    <div class="col-lg-6 col-md-4 d-none d-md-flex align-items-center justify-content-center p-0 position-relative">
-      <img
-        src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1600&h=1200&fit=crop&crop=center"
-        alt="Imagem financeira - banco"
-        class="img-fluid h-100 w-100"
-        style="object-fit: cover;"
-      />
+    <!-- Lado direito - Imagem moderna/gradiente -->
+    <div class="col-lg-6 col-md-4 d-none d-md-flex image-side">
+      <div class="image-content">
+        <!-- Gradiente de fundo -->
+        <div class="gradient-overlay"></div>
+
+        <!-- Elementos decorativos -->
+        <div class="floating-elements">
+          <div class="element element-1">
+            <svg width="80" height="80" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 2V22M17 5H9.5C8.57174 5 7.6815 5.36875 7.02513 6.02513C6.36875 6.6815 6 7.57174 6 8.5C6 9.42826 6.36875 10.3185 7.02513 10.9749C7.6815 11.6312 8.57174 12 9.5 12H14.5C15.4283 12 16.3185 12.3687 16.9749 13.0251C17.6312 13.6815 18 14.5717 18 15.5C18 16.4283 17.6312 17.3185 16.9749 17.9749C16.3185 18.6312 15.4283 19 14.5 19H6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="element element-2">
+            <svg width="60" height="60" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M20 6L9 17L4 12" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="element element-3">
+            <svg width="70" height="70" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M9 11H15M9 15H15M17 21H7C5.89543 21 5 20.1046 5 19V5C5 3.89543 5.89543 3 7 3H12.5858C12.851 3 13.1054 3.10536 13.2929 3.29289L19.7071 9.70711C19.8946 9.89464 20 10.149 20 10.4142V19C20 20.1046 19.1046 21 18 21H17Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+        </div>
+
+        <!-- Texto inspiracional -->
+        <div class="inspirational-text">
+          <h3>Gerencie suas finanças com segurança</h3>
+          <p>Uma plataforma moderna e segura para todas as suas necessidades bancárias</p>
+        </div>
+      </div>
     </div>
   </div>
 </div>

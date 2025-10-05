@@ -1,29 +1,35 @@
 import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { AuthService } from '../../../shared/services/auth/auth-service';
+import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login-form',
   imports: [
-    FormsModule,
-    CommonModule
+    CommonModule, FormsModule, ReactiveFormsModule
   ],
   templateUrl: './login-form.html',
   styleUrl: './login-form.scss'
 })
 export class LoginForm {
 
-  // Inicializa para evitar "Cannot read properties of undefined"
-  loginData: { email: string; password: string } = { email: '', password: '' };
-  errorMessage: string = '';
+  formGroup: FormGroup;
 
-  onLogin() {
-    // exemplo simples de validação mock
-    if (this.loginData.email === 'admin@sistembank.com' && this.loginData.password === '123456') {
-      this.errorMessage = '';
-      // redirecionamento / estado de login aqui
-    } else {
-      this.errorMessage = 'Email ou senha incorretos.';
-    }
+  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) {
+    this.formGroup = new FormGroup({
+      username: new FormControl('', Validators.required),
+      password: new FormControl('', Validators.required)
+    });
+
   }
+
+  login() {
+    if (this.formGroup.valid) {
+      const data = this.formGroup.value;
+      this.authService.login(data)
+   }
+  }
+
 }

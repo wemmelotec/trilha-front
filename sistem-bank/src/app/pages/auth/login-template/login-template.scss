@@ -1,99 +1,281 @@
-.container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100vw;
-  height: 100vh;
+// ===== ESTILOS MODERNOS PARA LOGIN =====
 
-
+// Container principal
+.login-container {
+  min-height: 100vh;
+  background: #f8fafc;
+  font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+// ===== LADO ESQUERDO - FORMULÁRIO =====
+.form-side {
+  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+  padding: 2rem;
+  position: relative;
 
-.form {
-  background-color: #F0F2F5;
-  width: 50%;
-  height: 100%;
-}
+  @media (max-width: 767.98px) {
+    min-height: 100vh;
+    padding: 1.5rem;
+  }
 
-.image {
-  background-color: #1A468E;
-  width: 50%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @media (min-width: 768px) and (max-width: 991.98px) {
+    padding: 2.5rem;
+  }
 
-
-  img {
-    width: 100%;
-    max-height: 80%;
-    margin-left: 72px;
-    margin-right: 72px;
+  // Efeito subtle pattern
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image:
+      radial-gradient(circle at 25% 25%, rgba(102, 126, 234, 0.03) 0%, transparent 50%),
+      radial-gradient(circle at 75% 75%, rgba(118, 75, 162, 0.03) 0%, transparent 50%);
+    pointer-events: none;
   }
 }
 
-.logo {
-  display: block;
-  margin-left: 160px;
-  margin-right: 160px;
-  margin-top: 80px;
+// Brand Section
+.brand-section {
+  position: relative;
+  z-index: 1;
 
-  img {
-    width: 150px;
-    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.15));
-    transition: transform 0.3s ease;
-    border-radius: 8px;
-  }
-}
-
-.login-form {
-  margin-left: 160px;
-  margin-right: 160px;
-  margin-top: 120px;
-}
-
-// Estilos customizados com Bootstrap
-.container-fluid {
-  padding: 0;
-}
-
-.bg-light {
-  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%) !important;
-}
-
-.logo img:hover {
-  transform: scale(1.05);
-}
-
-// Ajustes específicos para diferentes breakpoints
-@media (max-width: 767.98px) {
-  .login-form {
-    padding: 0 1rem;
-  }
-
-  .logo {
+  @media (max-width: 767.98px) {
     margin-bottom: 2rem !important;
   }
 }
 
-@media (min-width: 768px) and (max-width: 991.98px) {
-  .col-md-8 {
-    padding: 2rem;
+.brand-icon {
+  margin-bottom: 1rem;
+  animation: float 3s ease-in-out infinite;
+}
+
+.brand-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 0.5rem;
+
+  @media (max-width: 767.98px) {
+    font-size: 2rem;
   }
 }
 
-// Gradient overlay para a imagem (opcional)
-.col-lg-6:last-child::before {
-  content: '';
+.brand-subtitle {
+  color: #64748b;
+  font-size: 1.1rem;
+  font-weight: 400;
+  margin: 0;
+
+  @media (max-width: 767.98px) {
+    font-size: 1rem;
+  }
+}
+
+// Form Wrapper
+.login-form-wrapper {
+  max-width: 420px;
+  position: relative;
+  z-index: 1;
+
+  @media (max-width: 576px) {
+    max-width: 100%;
+  }
+}
+
+// ===== LADO DIREITO - IMAGEM MODERNA =====
+.image-side {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  position: relative;
+  overflow: hidden;
+
+  @media (max-width: 767.98px) {
+    display: none !important;
+  }
+}
+
+.image-content {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 3rem;
+  text-align: center;
+}
+
+// Gradiente overlay
+.gradient-overlay {
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(135deg, rgba(102, 126, 234, 0.3) 0%, rgba(118, 75, 162, 0.3) 100%);
-  z-index: 1;
+  background:
+    radial-gradient(circle at 20% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
 }
 
-.col-lg-6:last-child img {
-  z-index: 0;
+// Elementos flutuantes
+.floating-elements {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+}
+
+.element {
+  position: absolute;
+  opacity: 0.6;
+  animation: float 4s ease-in-out infinite;
+
+  &.element-1 {
+    top: 20%;
+    left: 15%;
+    animation-delay: 0s;
+  }
+
+  &.element-2 {
+    top: 60%;
+    right: 20%;
+    animation-delay: 1s;
+  }
+
+  &.element-3 {
+    bottom: 25%;
+    left: 20%;
+    animation-delay: 2s;
+  }
+}
+
+// Texto inspiracional
+.inspirational-text {
+  position: relative;
+  z-index: 1;
+  color: white;
+  max-width: 400px;
+
+  h3 {
+    font-size: 2.25rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+
+    @media (max-width: 991.98px) {
+      font-size: 1.875rem;
+    }
+  }
+
+  p {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    line-height: 1.6;
+    margin: 0;
+
+    @media (max-width: 991.98px) {
+      font-size: 1rem;
+    }
+  }
+}
+
+// ===== ANIMAÇÕES =====
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(10deg);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Animação de entrada
+.brand-section, .login-form-wrapper {
+  animation: fadeInUp 0.8s ease-out;
+}
+
+.login-form-wrapper {
+  animation-delay: 0.2s;
+  animation-fill-mode: both;
+}
+
+// ===== RESPONSIVIDADE AVANÇADA =====
+
+// Tablet portrait
+@media (min-width: 768px) and (max-width: 991.98px) {
+  .brand-title {
+    font-size: 2.25rem;
+  }
+
+  .inspirational-text h3 {
+    font-size: 1.75rem;
+  }
+}
+
+// Mobile landscape
+@media (max-height: 600px) and (orientation: landscape) {
+  .form-side {
+    padding: 1rem;
+  }
+
+  .brand-section {
+    margin-bottom: 1rem !important;
+  }
+
+  .brand-title {
+    font-size: 1.75rem;
+  }
+
+  .brand-subtitle {
+    font-size: 0.9rem;
+  }
+}
+
+// Large screens
+@media (min-width: 1400px) {
+  .login-container {
+    max-width: 1600px;
+    margin: 0 auto;
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.1);
+  }
+}
+
+// ===== ACESSIBILIDADE =====
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+// High contrast mode
+@media (prefers-contrast: high) {
+  .brand-title {
+    -webkit-text-fill-color: #000;
+    color: #000;
+  }
+
+  .image-side {
+    background: #000;
+  }
 }

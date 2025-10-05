@@ -1,7 +1,159 @@
-.example-spacer {
-  flex: 1 1 auto;
+// Navbar principal
+.navbar {
+  background-color: #f8f9fa;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  padding: 0.75rem 0;
+
+  @media (max-width: 768px) {
+    padding: 0.5rem 0;
+  }
 }
 
-mat-toolbar {
-  background-color: #d1cccc;
+// Brand/Logo
+.navbar-brand {
+  font-weight: 600;
+  color: #2c3e50 !important;
+  text-decoration: none;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: #667eea !important;
+  }
+
+  .brand-text {
+    font-size: 1.25rem;
+
+    @media (max-width: 576px) {
+      font-size: 1.1rem;
+    }
+  }
+
+  .material-symbols-outlined {
+    font-size: 1.5rem;
+    color: #3498db;
+  }
+}
+
+// Navigation links
+.nav-link {
+  color: #2c3e50 !important;
+  font-weight: 500;
+  padding: 0.5rem 1rem !important;
+  border-radius: 0.25rem;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+
+  &:hover {
+    color: #667eea !important;
+    background-color: rgba(102, 126, 234, 0.1);
+  }
+
+  &.active {
+    color: #667eea !important;
+    background-color: rgba(102, 126, 234, 0.15);
+    font-weight: 600;
+  }
+
+  mat-icon {
+    font-size: 18px;
+    width: 18px;
+    height: 18px;
+  }
+
+  @media (max-width: 991px) {
+    padding: 0.75rem 0 !important;
+    border-bottom: 1px solid #e9ecef;
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+}
+
+// Mobile toggle button
+.navbar-toggler {
+  padding: 0.25rem 0.5rem;
+  border: none !important;
+
+  &:focus {
+    box-shadow: none;
+  }
+
+  .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%2833, 37, 41, 0.75%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+  }
+}
+
+// Collapse menu
+.navbar-collapse {
+  @media (max-width: 991px) {
+    border-top: 1px solid #e9ecef;
+    margin-top: 1rem;
+    padding-top: 1rem;
+  }
+}
+
+// Mobile actions
+.mobile-actions {
+  padding-top: 1rem;
+  border-top: 1px solid #e9ecef;
+
+  .btn {
+    border-radius: 0.5rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    mat-icon {
+      font-size: 1.2rem;
+    }
+  }
+}
+
+// Material icons adjustments
+mat-icon {
+  font-size: 1.3rem;
+  width: auto;
+  height: auto;
+}
+
+// Desktop menu items
+.d-lg-flex {
+  gap: 0.25rem;
+}
+
+// Responsividade geral
+@media (max-width: 576px) {
+  .container-fluid {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+@media (max-width: 991px) {
+  .navbar-nav {
+    text-align: center;
+  }
+
+  .mobile-actions {
+    .btn {
+      padding: 0.75rem;
+      font-size: 0.9rem;
+    }
+  }
+}
+
+// Animações suaves
+.navbar-collapse {
+  transition: all 0.3s ease-in-out;
+}
+
+// Menu dropdown melhorias
+.mat-mdc-menu-panel {
+  @media (max-width: 576px) {
+    max-width: calc(100vw - 2rem);
+  }
 }

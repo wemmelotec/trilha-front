@@ -1,0 +1,150 @@
+<!-- Navbar -->
+<app-navbar></app-navbar>
+
+<!-- Wrapper de conteúdo -->
+<div class="content-wrapper">
+  <div class="container-fluid py-5">
+    <!-- Header de boas-vindas -->
+    <div class="row mb-5">
+      <div class="col-12 text-center">
+        <div class="welcome-header">
+          <h1 class="display-4 text-primary mb-3">
+            Bem-vindo ao <span class="gradient-text">Sistema Bancário</span>
+          </h1>
+          <p class="lead text-muted">
+            Gerencie clientes e contas de forma simples e eficiente
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cards de navegação principal -->
+    <div class="row justify-content-center g-4 mb-5">
+      <!-- Card Clientes -->
+      <div class="col-12 col-md-6 col-lg-4">
+        <mat-card class="dashboard-card h-100" (click)="navegarPara('/cliente')">
+          <mat-card-content class="text-center p-4">
+            <div class="card-icon-wrapper mb-3">
+              <mat-icon class="dashboard-icon">people</mat-icon>
+            </div>
+            <h3 class="card-title mb-3">Clientes</h3>
+            <p class="card-description">
+              Gerencie o cadastro de clientes, visualize informações e mantenha os dados atualizados.
+            </p>
+            <button mat-raised-button color="primary" class="w-100 mt-3">
+              <mat-icon>arrow_forward</mat-icon>
+              Acessar Clientes
+            </button>
+          </mat-card-content>
+        </mat-card>
+      </div>
+
+      <!-- Card Contas -->
+      <div class="col-12 col-md-6 col-lg-4">
+        <mat-card class="dashboard-card h-100" (click)="navegarPara('/conta')">
+          <mat-card-content class="text-center p-4">
+            <div class="card-icon-wrapper mb-3">
+              <mat-icon class="dashboard-icon">account_balance</mat-icon>
+            </div>
+            <h3 class="card-title mb-3">Contas</h3>
+            <p class="card-description">
+              Administre contas bancárias, consulte saldos e gerencie informações financeiras.
+            </p>
+            <button mat-raised-button color="primary" class="w-100 mt-3">
+              <mat-icon>arrow_forward</mat-icon>
+              Acessar Contas
+            </button>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+
+    <!-- Seção de estatísticas rápidas -->
+    <div class="row justify-content-center mb-4">
+      <div class="col-12 col-lg-8">
+        <mat-card class="stats-card">
+          <mat-card-header>
+            <mat-card-title>
+              <mat-icon>dashboard</mat-icon>
+              Visão Geral do Sistema
+            </mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <div class="row text-center">
+              <div class="col-6 col-md-3">
+                <div class="stat-item">
+                  <mat-icon class="stat-icon text-primary">people</mat-icon>
+                  <h4 class="stat-number">-</h4>
+                  <p class="stat-label">Clientes Ativos</p>
+                </div>
+              </div>
+              <div class="col-6 col-md-3">
+                <div class="stat-item">
+                  <mat-icon class="stat-icon text-success">account_balance</mat-icon>
+                  <h4 class="stat-number">-</h4>
+                  <p class="stat-label">Contas Cadastradas</p>
+                </div>
+              </div>
+              <div class="col-6 col-md-3">
+                <div class="stat-item">
+                  <mat-icon class="stat-icon text-info">trending_up</mat-icon>
+                  <h4 class="stat-number">-</h4>
+                  <p class="stat-label">Saldo Total</p>
+                </div>
+              </div>
+              <div class="col-6 col-md-3">
+                <div class="stat-item">
+                  <mat-icon class="stat-icon text-warning">schedule</mat-icon>
+                  <h4 class="stat-number">Hoje</h4>
+                  <p class="stat-label">Último Acesso</p>
+                </div>
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+
+    <!-- Seção de ações rápidas -->
+    <div class="row justify-content-center">
+      <div class="col-12 col-lg-8">
+        <mat-card class="quick-actions-card">
+          <mat-card-header>
+            <mat-card-title>
+              <mat-icon>flash_on</mat-icon>
+              Ações Rápidas
+            </mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <div class="row g-3">
+              <div class="col-6 col-md-3">
+                <button mat-stroked-button color="primary" class="w-100 quick-action-btn" (click)="navegarPara('/cliente/cadastro')">
+                  <mat-icon>person_add</mat-icon>
+                  <span class="d-none d-sm-inline">Novo Cliente</span>
+                </button>
+              </div>
+              <div class="col-6 col-md-3">
+                <button mat-stroked-button color="primary" class="w-100 quick-action-btn" (click)="navegarPara('/conta/cadastro')">
+                  <mat-icon>add_circle</mat-icon>
+                  <span class="d-none d-sm-inline">Nova Conta</span>
+                </button>
+              </div>
+              <div class="col-6 col-md-3">
+                <button mat-stroked-button color="accent" class="w-100 quick-action-btn" (click)="navegarPara('/cliente')">
+                  <mat-icon>search</mat-icon>
+                  <span class="d-none d-sm-inline">Buscar Cliente</span>
+                </button>
+              </div>
+              <div class="col-6 col-md-3">
+                <button mat-stroked-button color="accent" class="w-100 quick-action-btn" (click)="navegarPara('/conta')">
+                  <mat-icon>account_balance_wallet</mat-icon>
+                  <span class="d-none d-sm-inline">Consultar Conta</span>
+                </button>
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>
