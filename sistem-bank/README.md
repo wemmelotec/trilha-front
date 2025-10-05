@@ -12,48 +12,49 @@ ng serve
 
 Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
 
-## Code scaffolding
+## Manual de criação do CRUD
+🛠️ Passo a Passo
+1. Planejamento
+Antes de começar, defina:
+Entidade: Qual é o objeto principal do CRUD? (Ex.: Cliente, Conta, Produto)
+Campos: Quais propriedades a entidade terá? (Ex.: id, nome, cpf, etc.)
+Regras de Negócio: Validações e comportamentos específicos.
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+2. Criação do Modelo
+Local: models
+Arquivo: Nomeie o arquivo como nomeDaEntidadeModel.ts.
 
-```bash
-ng generate component component-name
-```
+3. Criação do Serviço
+Local: src/app/shared/services/nomeDaEntidade/
+Arquivo: Nomeie o arquivo como nomeDaEntidadeService.ts.
+Estrutura:
+CRUD básico: Métodos para getAll, getById, create, update, delete.
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+4. Criação dos Componentes
+a) Listagem
+Local: src/app/pages/nomeDaEntidade/listagem-nomeDaEntidade/
+Arquivos:
+listagem-nomeDaEntidade.ts
+listagem-nomeDaEntidade.html
+listagem-nomeDaEntidade.scss
+Estrutura:
+HTML: Use tabelas para desktop e cards para mobile.
+TypeScript:
+Importe o serviço.
+Carregue os dados no ngOnInit.
+Adicione métodos para editar e excluir.
+b) Cadastro/Edição
+Local: src/app/pages/nomeDaEntidade/cadastro-nomeDaEntidade/
+Arquivos:
+cadastro-nomeDaEntidade.ts
+cadastro-nomeDaEntidade.html
+cadastro-nomeDaEntidade.scss
+Estrutura:
+HTML: Use ReactiveFormsModule para formulários.
+TypeScript:
+Importe o serviço.
+Adicione validações e métodos para salvar e cancelar.
 
-```bash
-ng generate --help
-```
+5. Configuração das Rotas
+Arquivo: app.routes.ts
 
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
