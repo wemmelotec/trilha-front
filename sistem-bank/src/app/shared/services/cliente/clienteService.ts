@@ -19,7 +19,7 @@ export class ClienteService {
 
   getClienteById(id: number): Observable<ClienteModel> {
     console.log(`Buscando cliente com ID: ${id}`); // Debug
-    return this.http.get<ClienteModel>(`${this.apiUrl}${id}`);
+    return this.http.get<ClienteModel>(`${this.apiUrl}${id}/`);
   }
 
   createCliente(cliente: ClienteModel): Observable<ClienteModel> {
@@ -28,11 +28,12 @@ export class ClienteService {
 
   updateCliente(cliente: ClienteModel): Observable<ClienteModel> {
     console.log(`Atualizando cliente com ID: ${cliente.id}`); // Debug
-    return this.http.put<ClienteModel>(`${this.apiUrl}${cliente.id}`, cliente);
+    return this.http.put<ClienteModel>(`${this.apiUrl}${cliente.id}/`, cliente);
   }
 
   deleteCliente(id: number): Observable<object> {
-    return this.http.delete<object>(`${this.apiUrl}${id}`);
+    console.log(`Deletando cliente com ID: ${id}`); // Debug
+    return this.http.delete<object>(`${this.apiUrl}${id}/`);
   }
 
   getClientesPaginated(page: number, size: number): Observable<ClienteModel[]> {

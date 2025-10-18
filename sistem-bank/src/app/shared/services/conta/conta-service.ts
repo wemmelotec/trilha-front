@@ -19,7 +19,7 @@ export class ContaService {
 
   getContaById(id: number): Observable<ContaModel> {
     console.log(`Buscando conta com ID: ${id}`); // Debug
-    return this.http.get<ContaModel>(`${this.apiUrl}${id}`);
+    return this.http.get<ContaModel>(`${this.apiUrl}${id}/`);
   }
 
   createConta(conta: ContaModel): Observable<ContaModel> {
@@ -28,11 +28,12 @@ export class ContaService {
 
   updateConta(conta: ContaModel): Observable<ContaModel> {
     console.log(`Atualizando conta com ID: ${conta.id}`); // Debug
-    return this.http.put<ContaModel>(`${this.apiUrl}${conta.id}`, conta);
+    return this.http.put<ContaModel>(`${this.apiUrl}${conta.id}/`, conta);
   }
 
   deleteConta(id: number): Observable<object> {
-    return this.http.delete<object>(`${this.apiUrl}/${id}`);
+    console.log(`Deletando conta com ID: ${id}`); // Debug
+    return this.http.delete<object>(`${this.apiUrl}${id}/`);
   }
 
   getContasPaginated(page: number, size: number): Observable<ContaModel[]> {
