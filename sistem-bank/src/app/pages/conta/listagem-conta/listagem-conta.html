@@ -6,20 +6,29 @@
   <div class="container-fluid py-4">
     <!-- Header responsivo -->
     <div class="row align-items-center mb-4">
-      <div class="col-12 col-md-8 mb-3 mb-md-0">
+      <div class="col-12 col-md-6 mb-3 mb-md-0">
         <h1 class="page-title mb-0">Listagem de Contas</h1>
         <p class="text-muted mt-1 d-none d-md-block">Gerencie todas as contas cadastradas no sistema</p>
       </div>
-      <div class="col-12 col-md-4 text-md-end">
-        <button
-          mat-raised-button
-          color="primary"
-          routerLink="/conta/cadastro"
-          class="btn-nova-conta w-100 w-md-auto">
-          <mat-icon class="me-2">add</mat-icon>
-          <span class="d-inline d-sm-none">Nova</span>
-          <span class="d-none d-sm-inline">Nova Conta</span>
-        </button>
+      <div class="col-12 col-md-6 text-md-end">
+        <div class="d-flex gap-2 justify-content-md-end">
+          <button
+            mat-raised-button
+            color="primary"
+            routerLink="/conta/cadastro"
+            class="btn-nova-conta">
+            <mat-icon class="me-2">add</mat-icon>
+            Nova Conta
+          </button>
+          <button
+            mat-raised-button
+            color="accent"
+            routerLink="/conta/deposito"
+            class="btn-deposito">
+            <mat-icon class="me-2">savings</mat-icon>
+            Depósito
+          </button>
+        </div>
       </div>
     </div>
 

@@ -1,0 +1,213 @@
+// ===== ESTILOS PARA DEPÓSITO =====
+
+// Ajustes para harmonizar com o navbar
+body {
+  padding-top: 0;
+}
+
+// Wrapper de conteúdo
+.content-wrapper {
+  background: linear-gradient(
+    to bottom,
+    rgba(248, 249, 250, 0.3) 0%,
+    transparent 50%
+  );
+  min-height: calc(100vh - 80px);
+
+  @media (max-width: 768px) {
+    min-height: calc(100vh - 70px);
+  }
+}
+
+// Container principal
+.container-fluid {
+  @media (max-width: 576px) {
+    padding: 1rem;
+  }
+}
+
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+// Responsividade
+@media (max-width: 768px) {
+  .card-body {
+    padding: 1.5rem !important;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  .example-form {
+    min-width: 100%;
+  }
+}
+
+@media (max-width: 576px) {
+  .card-body {
+    padding: 1rem !important;
+  }
+
+  h1 {
+    font-size: 1.25rem;
+  }
+}
+
+// Card visual
+.card {
+  border-radius: 1rem;
+
+  @media (max-width: 768px) {
+    border-radius: 0.5rem;
+  }
+}
+
+mat-form-field {
+  margin-bottom: 1rem;
+
+  @media (max-width: 576px) {
+    margin-bottom: 0.75rem;
+  }
+}
+
+// Título com ícone
+.titulo-icon {
+  vertical-align: middle;
+  margin-right: 0.5rem;
+  font-size: 2rem;
+  width: 2rem;
+  height: 2rem;
+}
+
+// Card de informações da conta
+.info-card {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 12px;
+  padding: 1rem;
+  color: white;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+  .info-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+
+    mat-icon {
+      font-size: 1.5rem;
+      width: 1.5rem;
+      height: 1.5rem;
+    }
+  }
+
+  .info-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .info-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    backdrop-filter: blur(10px);
+
+    .info-label {
+      font-weight: 500;
+      opacity: 0.9;
+    }
+
+    .info-value {
+      font-weight: 600;
+      font-size: 1.05rem;
+
+      &.saldo-destaque {
+        color: #ffd700;
+        font-size: 1.2rem;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      }
+    }
+  }
+}
+
+// Preview do novo saldo
+.preview-saldo {
+  margin: 1.5rem 0;
+  padding: 1rem;
+  background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+  .preview-content {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    color: white;
+
+    mat-icon {
+      font-size: 2.5rem;
+      width: 2.5rem;
+      height: 2.5rem;
+      animation: pulse 2s infinite;
+    }
+
+    .preview-text {
+      display: flex;
+      flex-direction: column;
+
+      .preview-label {
+        font-size: 0.9rem;
+        opacity: 0.9;
+        font-weight: 500;
+      }
+
+      .preview-valor {
+        font-size: 1.5rem;
+        font-weight: 700;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      }
+    }
+  }
+}
+
+// Animação
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+// Estilo para o prefixo R$
+.mat-mdc-form-field-prefix {
+  color: #666;
+  font-weight: 500;
+}
+
+// Alinhamento do valor à direita
+.mat-mdc-form-field {
+  .mat-mdc-text-field-wrapper {
+    .mat-mdc-form-field-flex {
+      .mat-mdc-form-field-infix {
+        input[formControlName="valor"] {
+          text-align: right;
+        }
+      }
+    }
+  }
+}

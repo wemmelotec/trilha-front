@@ -5,6 +5,7 @@ import { ListagemCliente } from './pages/cliente/listagem-cliente/listagem-clien
 import { LoginTemplate } from './pages/auth/login-template/login-template';
 import { CadastroConta } from './pages/conta/cadastro-conta/cadastro-conta';
 import { Home } from './pages/home/home';
+import { Deposito } from './pages/conta/components/deposito/deposito';
 
 export const routes: Routes = [
   { path: 'home', component: Home },
@@ -19,6 +20,7 @@ export const routes: Routes = [
     children: [
       { path: 'cadastro', component: CadastroConta },
       { path: 'editar/:id', component: CadastroConta },
+      { path: 'deposito', component: Deposito },
       { path: '', component: ListagemConta }
     ]
   },

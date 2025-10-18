@@ -1,0 +1,138 @@
+<!-- Navbar -->
+<app-navbar></app-navbar>
+
+<!-- Wrapper de conteúdo -->
+<div class="content-wrapper">
+  <div class="container-fluid py-4">
+    <div class="row justify-content-center">
+      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+        <div class="card shadow-sm border-0">
+          <div class="card-body p-4">
+            <h1 class="text-center mb-4">
+              <mat-icon class="titulo-icon">account_balance</mat-icon>
+              Realizar Depósito
+            </h1>
+
+            <form
+              [formGroup]="formGroup"
+              class="example-form"
+              (ngSubmit)="realizarDeposito()"
+            >
+              <!-- Select de Conta -->
+              <small
+                class="text-danger mb-2"
+                *ngIf="formGroup.get('conta')?.errors &&
+                    formGroup.get('conta')?.hasError('required')"
+                >Campo obrigatório</small
+              >
+              <mat-form-field class="example-full-width">
+                <mat-label>Selecione a Conta</mat-label>
+                <mat-select
+                  formControlName="conta"
+                  (selectionChange)="onContaChange($event.value)">
+                  <mat-option *ngFor="let conta of contas" [value]="conta.id">
+                    Conta: {{conta.numero}} | Ag: {{conta.agencia}} | {{getClienteNome(conta.cliente)}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+
+              <!-- Card com informações da conta selecionada -->
+              <div class="info-card mb-3" *ngIf="contaSelecionada">
+                <div class="info-header">
+                  <mat-icon>info</mat-icon>
+                  <span>Informações da Conta</span>
+                </div>
+                <div class="info-content">
+                  <div class="info-item">
+                    <span class="info-label">Número:</span>
+                    <span class="info-value">{{contaSelecionada.numero}}</span>
+                  </div>
+                  <div class="info-item">
+                    <span class="info-label">Agência:</span>
+                    <span class="info-value">{{contaSelecionada.agencia}}</span>
+                  </div>
+                  <div class="info-item">
+                    <span class="info-label">Saldo Atual:</span>
+                    <span class="info-value saldo-destaque">
+                      {{formatarValor(contaSelecionada.saldo)}}
+                    </span>
+                  </div>
+                  <div class="info-item">
+                    <span class="info-label">Cliente:</span>
+                    <span class="info-value">{{getClienteNome(contaSelecionada.cliente)}}</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Input de Valor -->
+              <small
+                class="text-danger mb-2"
+                *ngIf="formGroup.get('valor')?.errors &&
+                    formGroup.get('valor')?.hasError('required')"
+                >Campo obrigatório</small
+              >
+              <small
+                class="text-danger mb-2"
+                *ngIf="formGroup.get('valor')?.errors &&
+                    formGroup.get('valor')?.hasError('pattern')"
+                >Formato inválido (use formato: 0.00)</small
+              >
+              <small
+                class="text-danger mb-2"
+                *ngIf="formGroup.get('valor')?.errors &&
+                    formGroup.get('valor')?.hasError('min')"
+                >Valor mínimo: R$ 0,01</small
+              >
+              <mat-form-field class="example-full-width">
+                <mat-label>Valor do Depósito</mat-label>
+                <input
+                  matInput
+                  formControlName="valor"
+                  placeholder="0.00"
+                  type="text"
+                />
+                <span matPrefix>R$ </span>
+              </mat-form-field>
+
+              <!-- Preview do novo saldo -->
+              <div class="preview-saldo" *ngIf="contaSelecionada && formGroup.get('valor')?.valid">
+                <div class="preview-content">
+                  <mat-icon>trending_up</mat-icon>
+                  <div class="preview-text">
+                    <span class="preview-label">Novo Saldo:</span>
+                    <span class="preview-valor">
+                      {{formatarValor(calcularNovoSaldo())}}
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Botões de ação -->
+              <div class="d-flex justify-content-center gap-3 mt-4">
+                <button
+                  type="button"
+                  mat-stroked-button
+                  color="warn"
+                  class="px-4"
+                  (click)="cancelar()"
+                >
+                  Cancelar
+                </button>
+                <button
+                  [disabled]="!formGroup.valid"
+                  type="submit"
+                  mat-raised-button
+                  color="primary"
+                  class="px-5"
+                >
+                  <mat-icon class="me-1">add_circle</mat-icon>
+                  Realizar Depósito
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
