@@ -33,8 +33,13 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/conta" routerLinkActive="active">
+          <a class="nav-link" routerLink="/conta" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
             <mat-icon class="me-1">account_balance</mat-icon>Contas
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/conta/deposito" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+            <mat-icon class="me-1">savings</mat-icon>Depositar
           </a>
         </li>
       </ul>
@@ -43,22 +48,6 @@
       <div class="d-flex align-items-center">
         <!-- Desktop menu -->
         <div class="d-none d-lg-flex align-items-center">
-          <button
-            mat-icon-button
-            class="me-2"
-            aria-label="Favoritos"
-          >
-            <mat-icon>favorite</mat-icon>
-          </button>
-
-          <button
-            mat-icon-button
-            class="me-2"
-            aria-label="Compartilhar"
-          >
-            <mat-icon>share</mat-icon>
-          </button>
-
           <button mat-icon-button [matMenuTriggerFor]="userMenu" aria-label="Menu do usuário">
             <mat-icon>account_circle</mat-icon>
           </button>
@@ -68,12 +57,6 @@
         @if (isMobileMenuOpen) {
           <div class="d-lg-none w-100 mt-3">
             <div class="mobile-actions">
-              <button class="btn btn-outline-primary w-100 mb-2" (click)="toggleMobileMenu()">
-                <mat-icon class="me-2">favorite</mat-icon>Favoritos
-              </button>
-              <button class="btn btn-outline-primary w-100 mb-2" (click)="toggleMobileMenu()">
-                <mat-icon class="me-2">share</mat-icon>Compartilhar
-              </button>
               <button class="btn btn-outline-primary w-100 mb-2" (click)="toggleMobileMenu()">
                 <mat-icon class="me-2">account_circle</mat-icon>Perfil
               </button>
@@ -88,7 +71,7 @@
   </div>
 
   <!-- User menu dropdown -->
-  <mat-menu #userMenu="matMenu">
+  <mat-menu #userMenu="matMenu" class="user-dropdown-menu">
     <button mat-menu-item>
       <mat-icon>person</mat-icon>
       <span>Perfil</span>
@@ -101,10 +84,6 @@
     <button mat-menu-item (click)="logout()">
       <mat-icon>logout</mat-icon>
       <span>Sair</span>
-    </button>
-    <button mat-menu-item routerLink="/conta/deposito">
-      <mat-icon>add_circle</mat-icon>
-      <span>Realizar Depósito</span>
     </button>
   </mat-menu>
 </nav>

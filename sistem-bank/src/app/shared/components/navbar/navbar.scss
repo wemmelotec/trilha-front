@@ -1,27 +1,33 @@
 // Navbar principal
 .navbar {
-  background-color: #f8f9fa;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  padding: 0.75rem 0;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.25);
+  padding: 0.5rem 0;
+  position: relative;
+  z-index: 1000;
 
   @media (max-width: 768px) {
-    padding: 0.5rem 0;
+    padding: 0.4rem 0;
   }
 }
 
 // Brand/Logo
 .navbar-brand {
-  font-weight: 600;
-  color: #2c3e50 !important;
+  font-weight: 700;
+  color: #ffffff !important;
   text-decoration: none;
-  transition: color 0.3s ease;
+  transition: all 0.3s ease;
+  padding: 0.3rem 0.5rem;
+  border-radius: 0.5rem;
 
   &:hover {
-    color: #667eea !important;
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
   }
 
   .brand-text {
     font-size: 1.25rem;
+    letter-spacing: 0.5px;
 
     @media (max-width: 576px) {
       font-size: 1.1rem;
@@ -30,41 +36,48 @@
 
   .material-symbols-outlined {
     font-size: 1.5rem;
-    color: #3498db;
+    color: #ffd700;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
   }
 }
 
 // Navigation links
 .nav-link {
-  color: #2c3e50 !important;
+  color: rgba(255, 255, 255, 0.9) !important;
   font-weight: 500;
-  padding: 0.5rem 1rem !important;
-  border-radius: 0.25rem;
+  padding: 0.4rem 0.9rem !important;
+  border-radius: 0.5rem;
   transition: all 0.3s ease;
   display: flex;
   align-items: center;
   text-decoration: none;
+  margin: 0 0.2rem;
 
   &:hover {
-    color: #667eea !important;
-    background-color: rgba(102, 126, 234, 0.1);
+    color: #ffffff !important;
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
   }
 
   &.active {
-    color: #667eea !important;
-    background-color: rgba(102, 126, 234, 0.15);
+    color: #ffffff !important;
+    background-color: rgba(255, 255, 255, 0.25);
     font-weight: 600;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
   }
 
   mat-icon {
-    font-size: 18px;
-    width: 18px;
-    height: 18px;
+    font-size: 20px;
+    width: 20px;
+    height: 20px;
+    margin-right: 0.5rem;
   }
 
   @media (max-width: 991px) {
-    padding: 0.75rem 0 !important;
-    border-bottom: 1px solid #e9ecef;
+    padding: 1rem 0.5rem !important;
+    margin: 0.25rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 
     &:last-child {
       border-bottom: none;
@@ -74,55 +87,97 @@
 
 // Mobile toggle button
 .navbar-toggler {
-  padding: 0.25rem 0.5rem;
-  border: none !important;
+  padding: 0.5rem;
+  border: 2px solid rgba(255, 255, 255, 0.5) !important;
+  border-radius: 0.5rem;
 
   &:focus {
-    box-shadow: none;
+    box-shadow: 0 0 0 0.2rem rgba(255, 255, 255, 0.25);
   }
 
   .navbar-toggler-icon {
-    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%2833, 37, 41, 0.75%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.9%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+    width: 1.5rem;
+    height: 1.5rem;
   }
 }
 
 // Collapse menu
 .navbar-collapse {
   @media (max-width: 991px) {
-    border-top: 1px solid #e9ecef;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
     margin-top: 1rem;
     padding-top: 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 0.5rem;
+    padding: 1rem;
   }
 }
 
 // Mobile actions
 .mobile-actions {
   padding-top: 1rem;
-  border-top: 1px solid #e9ecef;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
 
   .btn {
-    border-radius: 0.5rem;
-    font-weight: 500;
+    border-radius: 0.75rem;
+    font-weight: 600;
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 0.85rem;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.2);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    &.btn-danger {
+      background: linear-gradient(135deg, #f85032 0%, #e73827 100%);
+      border-color: transparent;
+
+      &:hover {
+        background: linear-gradient(135deg, #ff6b52 0%, #ff4836 100%);
+      }
+    }
 
     mat-icon {
-      font-size: 1.2rem;
+      font-size: 1.3rem;
     }
   }
 }
 
 // Material icons adjustments
 mat-icon {
-  font-size: 1.3rem;
+  font-size: 1.4rem;
   width: auto;
   height: auto;
 }
 
-// Desktop menu items
+// User menu button
 .d-lg-flex {
-  gap: 0.25rem;
+  button[mat-icon-button] {
+    color: rgba(255, 255, 255, 0.9);
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+      color: #ffffff;
+      transform: scale(1.1);
+    }
+
+    mat-icon {
+      font-size: 1.8rem;
+    }
+  }
 }
 
 // Responsividade geral
@@ -135,15 +190,21 @@ mat-icon {
 
 @media (max-width: 991px) {
   .navbar-nav {
-    text-align: center;
+    text-align: left;
+    padding: 0.5rem 0;
   }
 
   .mobile-actions {
     .btn {
-      padding: 0.75rem;
-      font-size: 0.9rem;
+      padding: 0.85rem;
+      font-size: 1rem;
     }
   }
+}
+
+// Efeito de hover suave global
+* {
+  -webkit-tap-highlight-color: transparent;
 }
 
 // Animações suaves
@@ -151,9 +212,57 @@ mat-icon {
   transition: all 0.3s ease-in-out;
 }
 
-// Menu dropdown melhorias
-.mat-mdc-menu-panel {
+// Menu dropdown - Correção do z-index
+::ng-deep .mat-mdc-menu-panel {
+  margin-top: 0.5rem;
+  border-radius: 0.75rem !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15) !important;
+  overflow: hidden;
+
+  &.user-dropdown-menu {
+    min-width: 200px;
+  }
+
+  .mat-mdc-menu-content {
+    padding: 0.5rem 0;
+  }
+
+  .mat-mdc-menu-item {
+    padding: 0.85rem 1.5rem;
+    min-height: 48px;
+    transition: all 0.2s ease;
+
+    &:hover {
+      background-color: rgba(102, 126, 234, 0.1);
+
+      mat-icon {
+        color: #667eea;
+        transform: scale(1.1);
+      }
+    }
+
+    mat-icon {
+      margin-right: 0.75rem;
+      transition: all 0.2s ease;
+    }
+
+    span {
+      font-weight: 500;
+      font-size: 0.95rem;
+    }
+  }
+
+  .mat-divider {
+    margin: 0.5rem 0;
+    border-top-color: rgba(0, 0, 0, 0.08);
+  }
+
   @media (max-width: 576px) {
     max-width: calc(100vw - 2rem);
   }
+}
+
+// Garantir que o dropdown fique acima do navbar
+::ng-deep .cdk-overlay-container {
+  z-index: 1050 !important;
 }
