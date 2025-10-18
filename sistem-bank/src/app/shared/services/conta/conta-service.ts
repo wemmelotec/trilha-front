@@ -2,8 +2,9 @@ import { Injectable } from '@angular/core';
 import { environment } from '../../../../environments/environment.development';
 import { HttpClient } from '@angular/common/http';
 import { ContaModel } from '../../models/contaModel';
-import { Observable } from 'rxjs';
+import { Observable, switchMap } from 'rxjs';
 import { DepositoModel } from '../../models/depositoModel';
+import { SaqueModel } from '../../models/saqueModel';
 
 @Injectable({
   providedIn: 'root'
@@ -77,6 +78,34 @@ export class ContaService {
         }
       });
     });
+  }
+
+  realizarSaque(saque: SaqueModel): Observable<ContaModel> {
+    console.log('🔄 Realizando saque:', saque);
+
+    return this.getContaById(saque.conta).pipe(
+      switchMap((conta) => {
+        const valorSaque = parseFloat(saque.valor);
+        const saldoAtual = parseFloat(conta.saldo);
+        const novoSaldo = saldoAtual - valorSaque;
+
+        console.log('💰 Saldo atual:', saldoAtual);
+        console.log('💸 Valor do saque:', valorSaque);
+        console.log('💰 Novo saldo:', novoSaldo);
+
+        // Validar se há saldo suficiente
+        if (novoSaldo < 0) {
+          throw new Error('Saldo insuficiente para realizar o saque');
+        }
+
+        const contaAtualizada: ContaModel = {
+          ...conta,
+          saldo: novoSaldo.toFixed(2),
+        };
+
+        return this.updateConta(saque.conta, contaAtualizada);
+      })
+    );
   }
 
 }

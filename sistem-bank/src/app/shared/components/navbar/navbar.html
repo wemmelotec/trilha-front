@@ -15,12 +15,17 @@
       aria-controls="navbarNav"
       aria-expanded="false"
       aria-label="Toggle navigation"
-      (click)="toggleMobileMenu()">
+      (click)="toggleMobileMenu()"
+    >
       <span class="navbar-toggler-icon"></span>
     </button>
 
     <!-- Collapsible content -->
-    <div class="collapse navbar-collapse" id="navbarNav" [class.show]="isMobileMenuOpen">
+    <div
+      class="collapse navbar-collapse"
+      id="navbarNav"
+      [class.show]="isMobileMenuOpen"
+    >
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
           <a class="nav-link" routerLink="/home" routerLinkActive="active">
@@ -33,13 +38,33 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/conta" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+          <a
+            class="nav-link"
+            routerLink="/conta"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{exact: true}"
+          >
             <mat-icon class="me-1">account_balance</mat-icon>Contas
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/conta/deposito" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+          <a
+            class="nav-link"
+            routerLink="/conta/deposito"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{exact: true}"
+          >
             <mat-icon class="me-1">savings</mat-icon>Depositar
+          </a>
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            routerLink="/conta/saque"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{exact: true}"
+          >
+            <mat-icon class="me-1">payments</mat-icon>Sacar
           </a>
         </li>
       </ul>
@@ -48,23 +73,30 @@
       <div class="d-flex align-items-center">
         <!-- Desktop menu -->
         <div class="d-none d-lg-flex align-items-center">
-          <button mat-icon-button [matMenuTriggerFor]="userMenu" aria-label="Menu do usuário">
+          <button
+            mat-icon-button
+            [matMenuTriggerFor]="userMenu"
+            aria-label="Menu do usuário"
+          >
             <mat-icon>account_circle</mat-icon>
           </button>
         </div>
 
         <!-- Mobile menu items -->
         @if (isMobileMenuOpen) {
-          <div class="d-lg-none w-100 mt-3">
-            <div class="mobile-actions">
-              <button class="btn btn-outline-primary w-100 mb-2" (click)="toggleMobileMenu()">
-                <mat-icon class="me-2">account_circle</mat-icon>Perfil
-              </button>
-              <button class="btn btn-danger w-100" (click)="logout()">
-                <mat-icon class="me-2">logout</mat-icon>Sair
-              </button>
-            </div>
+        <div class="d-lg-none w-100 mt-3">
+          <div class="mobile-actions">
+            <button
+              class="btn btn-outline-primary w-100 mb-2"
+              (click)="toggleMobileMenu()"
+            >
+              <mat-icon class="me-2">account_circle</mat-icon>Perfil
+            </button>
+            <button class="btn btn-danger w-100" (click)="logout()">
+              <mat-icon class="me-2">logout</mat-icon>Sair
+            </button>
           </div>
+        </div>
         }
       </div>
     </div>

@@ -8,7 +8,9 @@
     <div class="row align-items-center mb-4">
       <div class="col-12 col-md-6 mb-3 mb-md-0">
         <h1 class="page-title mb-0">Listagem de Contas</h1>
-        <p class="text-muted mt-1 d-none d-md-block">Gerencie todas as contas cadastradas no sistema</p>
+        <p class="text-muted mt-1 d-none d-md-block">
+          Gerencie todas as contas cadastradas no sistema
+        </p>
       </div>
       <div class="col-12 col-md-6 text-md-end">
         <div class="d-flex gap-2 justify-content-md-end">
@@ -16,7 +18,8 @@
             mat-raised-button
             color="primary"
             routerLink="/conta/cadastro"
-            class="btn-nova-conta">
+            class="btn-nova-conta"
+          >
             <mat-icon class="me-2">add</mat-icon>
             Nova Conta
           </button>
@@ -24,9 +27,20 @@
             mat-raised-button
             color="accent"
             routerLink="/conta/deposito"
-            class="btn-deposito">
+            class="btn-deposito"
+          >
             <mat-icon class="me-2">savings</mat-icon>
             Depósito
+          </button>
+          <button
+            mat-raised-button
+            color="warn"
+            routerLink="/conta/saque"
+            class="btn-saque ms-2"
+          >
+            <mat-icon class="me-2">payments</mat-icon>
+            <span class="d-inline d-sm-none">Saque</span>
+            <span class="d-none d-sm-inline">Saque</span>
           </button>
         </div>
       </div>
@@ -72,7 +86,9 @@
             <td mat-cell *matCellDef="let element">
               <div class="cliente-info">
                 <span class="cliente-nome">{{element.clienteInfo.nome}}</span>
-                <small class="cliente-cpf text-muted d-block">{{element.clienteInfo.cpf}}</small>
+                <small class="cliente-cpf text-muted d-block"
+                  >{{element.clienteInfo.cpf}}</small
+                >
               </div>
             </td>
           </ng-container>
@@ -81,7 +97,11 @@
           <ng-container matColumnDef="saldo">
             <th mat-header-cell *matHeaderCellDef>Saldo</th>
             <td mat-cell *matCellDef="let element">
-              <span class="saldo-valor" [class.positivo]="isSaldoPositivo(element.saldo)" [class.negativo]="!isSaldoPositivo(element.saldo)">
+              <span
+                class="saldo-valor"
+                [class.positivo]="isSaldoPositivo(element.saldo)"
+                [class.negativo]="!isSaldoPositivo(element.saldo)"
+              >
                 {{formatarSaldo(element.saldo)}}
               </span>
             </td>
@@ -96,14 +116,16 @@
                   mat-icon-button
                   [routerLink]="'/conta/editar/' + element.id"
                   matTooltip="Editar conta"
-                  class="action-btn edit-btn">
+                  class="action-btn edit-btn"
+                >
                   <mat-icon>edit</mat-icon>
                 </button>
                 <button
                   mat-icon-button
                   (click)="deletarConta(element.id)"
                   matTooltip="Excluir conta"
-                  class="action-btn delete-btn">
+                  class="action-btn delete-btn"
+                >
                   <mat-icon>delete</mat-icon>
                 </button>
               </div>
@@ -119,16 +141,25 @@
     <!-- Cards Mobile/Tablet -->
     <div class="d-lg-none" *ngIf="!loading()">
       <div class="row">
-        <div class="col-12 col-md-6 mb-3" *ngFor="let conta of dadosPaginados; trackBy: trackById">
+        <div
+          class="col-12 col-md-6 mb-3"
+          *ngFor="let conta of dadosPaginados; trackBy: trackById"
+        >
           <div class="card conta-card h-100">
             <div class="card-body">
               <!-- Header do card -->
-              <div class="d-flex justify-content-between align-items-start mb-3">
+              <div
+                class="d-flex justify-content-between align-items-start mb-3"
+              >
                 <div>
                   <h6 class="card-title mb-1">Conta {{conta.numero}}</h6>
                   <small class="text-muted">#{{conta.id}}</small>
                 </div>
-                <span class="saldo-badge" [class.positivo]="isSaldoPositivo(conta.saldo)" [class.negativo]="!isSaldoPositivo(conta.saldo)">
+                <span
+                  class="saldo-badge"
+                  [class.positivo]="isSaldoPositivo(conta.saldo)"
+                  [class.negativo]="!isSaldoPositivo(conta.saldo)"
+                >
                   {{formatarSaldo(conta.saldo)}}
                 </span>
               </div>
@@ -155,7 +186,8 @@
                   mat-stroked-button
                   color="primary"
                   [routerLink]="'/conta/editar/' + conta.id"
-                  class="flex-fill">
+                  class="flex-fill"
+                >
                   <mat-icon class="me-1">edit</mat-icon>
                   Editar
                 </button>
@@ -163,7 +195,8 @@
                   mat-stroked-button
                   color="warn"
                   (click)="deletarConta(conta.id)"
-                  class="flex-fill">
+                  class="flex-fill"
+                >
                   <mat-icon class="me-1">delete</mat-icon>
                   Excluir
                 </button>
@@ -175,7 +208,10 @@
     </div>
 
     <!-- Empty state -->
-    <div *ngIf="!loading() && totalContas === 0" class="empty-state text-center py-5">
+    <div
+      *ngIf="!loading() && totalContas === 0"
+      class="empty-state text-center py-5"
+    >
       <mat-icon class="empty-icon mb-3">account_balance</mat-icon>
       <h4>Nenhuma conta encontrada</h4>
       <p class="text-muted mb-4">Comece cadastrando sua primeira conta</p>
@@ -186,7 +222,10 @@
     </div>
 
     <!-- Paginação -->
-    <div class="d-flex justify-content-center mt-4" *ngIf="!loading() && totalContas > 0">
+    <div
+      class="d-flex justify-content-center mt-4"
+      *ngIf="!loading() && totalContas > 0"
+    >
       <mat-paginator
         [pageSizeOptions]="[5, 10, 20]"
         [showFirstLastButtons]="true"
@@ -194,7 +233,8 @@
         [pageIndex]="pageIndex"
         [pageSize]="pageSize"
         (page)="onPageChange($event)"
-        class="responsive-paginator">
+        class="responsive-paginator"
+      >
       </mat-paginator>
     </div>
   </div>

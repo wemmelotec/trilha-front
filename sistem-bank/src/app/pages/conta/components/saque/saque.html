@@ -1,0 +1,169 @@
+<app-navbar></app-navbar>
+
+<div class="content-wrapper">
+  <div class="container-fluid py-4">
+    <div class="row justify-content-center">
+      <div class="col-12 col-lg-8">
+        <!-- Header -->
+        <div class="page-header mb-4">
+          <button mat-icon-button (click)="voltar()" class="back-button">
+            <mat-icon>arrow_back</mat-icon>
+          </button>
+          <div class="header-content">
+            <h1 class="page-title">
+              <mat-icon class="title-icon">payments</mat-icon>
+              Realizar Saque
+            </h1>
+            <p class="page-subtitle">Retire dinheiro da sua conta bancária</p>
+          </div>
+        </div>
+
+        <!-- Loading State -->
+        <div *ngIf="loading()" class="loading-container">
+          <mat-spinner diameter="50"></mat-spinner>
+          <p class="loading-text">Processando...</p>
+        </div>
+
+        <!-- Formulário -->
+        <form [formGroup]="saqueForm" (ngSubmit)="realizarSaque()" *ngIf="!loading()">
+          <mat-card class="saque-card">
+            <mat-card-content>
+              <!-- Seleção de Conta -->
+              <div class="form-section">
+                <h3 class="section-title">
+                  <mat-icon>account_balance</mat-icon>
+                  Selecione a Conta
+                </h3>
+
+                <mat-form-field appearance="outline" class="w-100">
+                  <mat-label>Conta</mat-label>
+                  <mat-select
+                    formControlName="conta"
+                    (selectionChange)="onContaChange($event.value)">
+                    <mat-option *ngFor="let conta of contas()" [value]="conta.id">
+                      <div class="conta-option">
+                        <div class="conta-info">
+                          <strong>{{ conta.numero }}</strong>
+                          <span class="separator">•</span>
+                          <span>Ag: {{ conta.agencia }}</span>
+                        </div>
+                        <div class="cliente-info">{{ conta.clienteInfo.nome }}</div>
+                        <div class="saldo-info">Saldo: R$ {{ formatarValor(conta.saldo) }}</div>
+                      </div>
+                    </mat-option>
+                  </mat-select>
+                  <mat-icon matPrefix>search</mat-icon>
+                  <mat-error *ngIf="saqueForm.get('conta')?.hasError('required')">
+                    Selecione uma conta
+                  </mat-error>
+                </mat-form-field>
+              </div>
+
+              <!-- Informações da Conta Selecionada -->
+              <div class="info-card" *ngIf="contaSelecionada()">
+                <div class="info-header">
+                  <mat-icon>info</mat-icon>
+                  <h4>Informações da Conta</h4>
+                </div>
+                <div class="info-grid">
+                  <div class="info-item">
+                    <span class="info-label">Titular:</span>
+                    <span class="info-value">{{ contaSelecionada()?.clienteInfo.nome }}</span>
+                  </div>
+                  <div class="info-item">
+                    <span class="info-label">Conta:</span>
+                    <span class="info-value">{{ contaSelecionada()?.numero }}</span>
+                  </div>
+                  <div class="info-item">
+                    <span class="info-label">Agência:</span>
+                    <span class="info-value">{{ contaSelecionada()?.agencia }}</span>
+                  </div>
+                  <div class="info-item saldo-item">
+                    <span class="info-label">Saldo Disponível:</span>
+                    <span class="info-value saldo-valor">
+                      R$ {{ formatarValor(contaSelecionada()!.saldo) }}
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Valor do Saque -->
+              <div class="form-section" *ngIf="contaSelecionada()">
+                <h3 class="section-title">
+                  <mat-icon>attach_money</mat-icon>
+                  Valor do Saque
+                </h3>
+
+                <mat-form-field appearance="outline" class="w-100">
+                  <mat-label>Valor (R$)</mat-label>
+                  <input
+                    matInput
+                    type="number"
+                    formControlName="valor"
+                    placeholder="0.00"
+                    step="0.01"
+                    min="0.01" />
+                  <mat-icon matPrefix>payments</mat-icon>
+                  <mat-error *ngIf="saqueForm.get('valor')?.hasError('required')">
+                    Digite o valor do saque
+                  </mat-error>
+                  <mat-error *ngIf="saqueForm.get('valor')?.hasError('min')">
+                    O valor deve ser maior que zero
+                  </mat-error>
+                </mat-form-field>
+              </div>
+
+              <!-- Preview do Novo Saldo -->
+              <div class="preview-card" *ngIf="contaSelecionada() && saqueForm.get('valor')?.value > 0">
+                <div class="preview-header">
+                  <mat-icon>preview</mat-icon>
+                  <h4>Prévia da Operação</h4>
+                </div>
+                <div class="preview-content">
+                  <div class="preview-item">
+                    <span class="preview-label">Saldo Atual:</span>
+                    <span class="preview-value current">
+                      R$ {{ formatarValor(contaSelecionada()!.saldo) }}
+                    </span>
+                  </div>
+                  <div class="preview-operation">
+                    <mat-icon>remove_circle_outline</mat-icon>
+                    <span>R$ {{ formatarValor(saqueForm.get('valor')?.value) }}</span>
+                  </div>
+                  <div class="preview-item">
+                    <span class="preview-label">Novo Saldo:</span>
+                    <span class="preview-value new"
+                          [class.negative]="parseFloat(calcularNovoSaldo().replace(',', '.')) < 0">
+                      R$ {{ calcularNovoSaldo() }}
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </mat-card-content>
+
+            <!-- Actions -->
+            <mat-card-actions class="card-actions">
+              <button
+                mat-stroked-button
+                type="button"
+                (click)="voltar()"
+                class="btn-cancel">
+                <mat-icon>close</mat-icon>
+                Cancelar
+              </button>
+              <button
+                mat-raised-button
+                color="warn"
+                type="submit"
+                [disabled]="saqueForm.invalid || loading()"
+                class="btn-submit">
+                <mat-icon>payments</mat-icon>
+                Realizar Saque
+              </button>
+            </mat-card-actions>
+          </mat-card>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
