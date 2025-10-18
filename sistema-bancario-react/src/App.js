@@ -1,13 +1,16 @@
 import './App.css';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Clientes from './pages/clientes';
+import ClienteList from './pages/clienteList';
+import ClienteForm from './pages/clienteForm';
 
 function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Clientes />} />
-        <Route path="/clientes" element={<Clientes />} />
+        <Route path="/" element={<ClienteList />} />
+        <Route path="/clientes" element={<ClienteList />} />
+        <Route path="/clientes/cadastro" element={<ClienteForm />} />
+        <Route path="/clientes/editar/:id" element={<ClienteForm />} />
       </Routes>
     </Router>
   );
