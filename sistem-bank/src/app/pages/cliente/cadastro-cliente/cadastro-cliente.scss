@@ -82,14 +82,20 @@ mat-form-field {
   }
 }
 
+// Estilo para radio group de status
 mat-radio-group {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  margin: 1rem 0;
 
   @media (min-width: 768px) {
     flex-direction: row;
     gap: 2rem;
   }
+}
+
+.form-label {
+  font-weight: 500;
+  color: #666;
+  font-size: 0.875rem;
 }

@@ -8,6 +8,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatRadioModule } from '@angular/material/radio';
 import { CommonModule } from '@angular/common';
 import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 import { Navbar } from '../../../shared/components/navbar/navbar';
 
 @Component({
@@ -19,6 +21,8 @@ import { Navbar } from '../../../shared/components/navbar/navbar';
     MatFormFieldModule,
     MatInputModule,
     MatRadioModule,
+    MatButtonModule,
+    MatIconModule,
     Navbar
   ],
   templateUrl: './cadastro-cliente.html',
